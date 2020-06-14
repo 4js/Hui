@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "游工网",
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-picker": "@vant/weapp/picker/index",
+    "van-row": "@vant/weapp/row/index",
+    "van-col": "@vant/weapp/col/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-toast": "@vant/weapp/toast/index",
+    "van-icon": "@vant/weapp/icon/index"
+  }
+}

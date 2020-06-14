@@ -1,0 +1,26 @@
+/* pages/login/login.wxss */
+.login-container{
+    padding-top: 40rpx;
+    text-align: center;
+}
+.logo{
+    width: 260rpx;
+    margin-bottom: 40rpx;
+}
+.main-box{
+    width: 600rpx;
+    margin: 0 auto;
+    padding: 0 30rpx 60rpx;
+    background: #fff;
+}
+.kong{
+    height: 40rpx;
+    background: #fff;
+}
+.other{
+    padding: 0 20rpx;
+    font-size: 20rpx;
+    color: #ccc;
+    display: flex;
+    justify-content: space-between;
+}

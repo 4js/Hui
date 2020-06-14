@@ -1,0 +1,32 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/log/log",
+    "pages/login/login"
+  ],
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#fdd100",
+    "list": [
+      {
+        "iconPath": "/assets/image/index.png",
+        "selectedIconPath": "/assets/image/index-ac.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "iconPath": "/assets/image/mine.png",
+        "selectedIconPath": "/assets/image/mine-ac.png",
+        "pagePath": "pages/log/log",
+        "text": "我的"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "游工网",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

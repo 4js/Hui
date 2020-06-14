@@ -1,0 +1,23 @@
+<!--pages/log/log.wxml-->
+<view class="container gray-bg log-container">
+    <van-cell>
+        <view slot="title">
+            <view class="van-cell-text">充值时间</view>
+        </view>
+        <view class="center">充值金额</view>
+    </van-cell>
+    <view class="kong"/>
+    <view wx:if="{{list.length}}">
+        <van-cell wx:for="{{list}}" wx:key="index">
+            <view slot="title">
+                <view class="van-cell-text">{{item.create_time}}</view>
+            </view>
+            <view class="center">{{item.price}}元</view>
+        </van-cell>
+    </view>
+    <view wx:else class="tips">您还没有充值记录</view>
+    <van-toast id="van-toast" />
+    <view class='goTop' wx:if='{{floorstatus}}' bindtap="goTop">
+        <van-icon name="arrow-up" />
+    </view>
+</view>

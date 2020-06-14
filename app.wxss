@@ -1,0 +1,12 @@
+/**app.wxss**/
+@import "/icon.wxss"
+page{
+  height: 100%;
+}
+.container {
+  height: 100%;
+  box-sizing: border-box;
+}
+.gray-bg{
+  background-color: #f0f3f6;
+}

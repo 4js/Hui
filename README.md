@@ -1,5 +1,3 @@
-### 微信小程序商城
-
-架构：wxml+vant
+微信小程序商城
 
 > author: macfeng
