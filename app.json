@@ -2,22 +2,23 @@
   "pages": [
     "pages/index/index",
     "pages/log/log",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/mine/mine"
   ],
   "tabBar": {
     "color": "#999999",
-    "selectedColor": "#fdd100",
+    "selectedColor": "#333",
     "list": [
       {
-        "iconPath": "/assets/image/index.png",
-        "selectedIconPath": "/assets/image/index-ac.png",
+        "iconPath": "/assets/home.png",
+        "selectedIconPath": "/assets/ahome.png",
         "pagePath": "pages/index/index",
         "text": "首页"
       },
       {
-        "iconPath": "/assets/image/mine.png",
-        "selectedIconPath": "/assets/image/mine-ac.png",
-        "pagePath": "pages/log/log",
+        "iconPath": "/assets/mine.png",
+        "selectedIconPath": "/assets/amine.png",
+        "pagePath": "pages/mine/mine",
         "text": "我的"
       }
     ]
@@ -25,7 +26,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "游工网",
+    "navigationBarTitleText": "惠汇精选",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json"

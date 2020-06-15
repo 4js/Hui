@@ -1,197 +1,85 @@
 /**index.wxss**/
 .banner{
   width: 100%;
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  overflow:hidden;
 }
-.image{
+.banner image{
   width: 100%;
+  border-radius: 12rpx;
 }
-.banner .btn-vip{
-  position: fixed;
-  top: 60rpx;
-  right: -10rpx;
-  z-index: 10000;
+
+.title-box{
+  line-height: 120rpx;
+  font-size: 36rpx;
+  color: #333;
 }
-.search-box{
-  width: 100%;
-  padding: 10rpx 20rpx;
+
+/** 热门推荐 */
+.goods-item{
+  border-radius: 12rpx;
   background-color: #fff;
-  margin-top: 20rpx;
-  display: flex;
-  font-size: 26rpx;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  align-items: center;
-  box-sizing: border-box;
+  padding: 24rpx;
 }
-.search-box >view{
-  padding-right: 20rpx;
-  color: #666;
-}
-.search-box .text{
-  display: inline-block;
-  width: 140rpx;
-  height: 44rpx;
-  padding: 0 8rpx;
-  line-height: 44rpx;
-  border-radius: 8rpx;
-  background-color: #666;
-  color: #fff;
-}
-.search-box .tit{
-  padding-right: 6rpx;
-}
-.search-box .input{
-  display: inline-block;
-  width: 110rpx;
-  height: 44rpx;
-  padding: 0 8rpx;
-  line-height: 44rpx;
-  border-radius: 8rpx;
-  background-color: #666;
-  color: #fff;
-}
-.flex{
-  display: flex;
-  align-items: center;
-}
-.shi{
-  width: 305rpx;
-  padding: 20rpx;
-  margin: 20rpx auto;
-  background: #fff;
-  border: 1px solid #fdd100;
-}
-
-.shi .shi-logo{
-  width: 305rpx;
-  position: relative;
-}
-
-.shi .logo-bg{
-  width: 305rpx;
-  position: relative;
-}
-
-.shi .logo{
-  width: 265rpx;
-  height: 265rpx;
-  background-color: #ccc;
-  position: absolute;
-  top: 20rpx;
-  left: 20rpx;
-}
-
-.shi .pai{
-  width: 80rpx;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  margin-left: -40rpx;
-}
-
-.shi-name{
+.goods-item .goods-img{
   width: 100%;
-  position: relative;
 }
-
-.name-bg{
-  width: 100%;
-  height: 40rpx;
-  position: relative;
-  top: 0;
-}
-.main-text{
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  position: absolute;
-  top: 0;
-}
-.main-text text{
-  display: inline-block;
-  width: 120rpx;
-  line-height: 40rpx;
-  font-size: 20rpx;
-  text-align: center;
-}
-
-.main-text .bai1{
-  padding-left: 6rpx;
-  color: #fff;
+.goods-item .goods-tit{
+  font-size: 32rpx;
+  color: #333;
   text-align: left;
 }
-
-.main-text .bai2{
-  padding-right: 6rpx;
-  color: #fff;
-  text-align: right;
-}
-.info-item{
-  width: 100%;
+.goods-item .goods-bt{
   display: flex;
   justify-content: space-between;
-  font-size: 20rpx;
-  color: #666;
-}
-
-.info-item .half{
-  width: 50%;
-}
-
-.info-item .all{
-  width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-}
-
-.clear{
-  font-size: 20rpx;
-  padding: 10rpx;
-}
-
-
-.no-data-box{
-  width: 100%;
-  padding: 80rpx 0 60rpx;
-  text-align: center;
-}
-
-.no-data-box image {
-  width: 400rpx;
-  height: auto;
-}
-
-.no-data-box .tips{
-  margin-top: 60rpx;
-  font-size: 24rpx;
-  text-align: center;
   line-height: 60rpx;
-  color: #ccc;
+}
+.goods-item .goods-bt .z{
+  color: #FF3200;
+  font-size: 32rpx;
+  padding-right: 12rpx;
+}
+.goods-item .goods-bt .y{
+  color: #9E9E9E;
+  font-size: 24rpx;
+  text-decoration:line-through
+}
+.goods-item .goods-bt .purchase{
+  color: #9E9E9E;
+  font-size: 24rpx;
+}
+/** 精选好物 */
+.best-item{
+  overflow: hidden;
+  border-radius: 12rpx;
+  background-color: #fff;
+  margin-bottom: 40rpx;
+}
+.best-item .best-img{
+  width: 100%;
+}
+.best-item .best-tit{
+  color: #333;
+  font-size: 28rpx;
+  padding: 0 30rpx;
+  text-align: left;
+}
+.best-item .best-bt{
+  display: flex;
+  padding: 0 30rpx;
+  justify-content: space-between;
+  line-height: 60rpx;
+}
+.best-item .best-bt .z{
+  color: #FF3200;
+  font-size: 28rpx;
+  padding-right: 12rpx;
+}
+.best-item .best-bt .purchase{
+  color: #9E9E9E;
+  font-size: 24rpx;
 }
 
-.static-box{
-  width: 700rpx;
-  height: 110rpx;
-  position: absolute;
-  bottom: 0;
-  font-size: 20rpx;
-  left: 25rpx;
-  color: #fdd100;
-  text-align: center;
-}
-.static-box .van-col{
-  padding-top: 30rpx;
-}
-.yellow{
-  color: #ffb200;
-}
+
+/** 去顶部 */
 .goTop{
   width: 60rpx;
   height: 60rpx;

@@ -1,100 +1,59 @@
 <!--index.wxml-->
 <view class="container gray-bg">
-  <view class="banner">
-    <image class="image" src="../../assets/image/index/banner.png" mode="widthFix"/>
-    <image class="image" src="../../assets/image/index/banner-data.png" mode="widthFix"/>
-    <van-row class="static-box">
-      <van-col class="static-item" span="6">{{static.con}}</van-col>
-      <van-col class="static-item" span="6">{{static.pre}}</van-col>
-      <van-col class="static-item" span="6">{{static.singu}}</van-col>
-      <van-col class="static-item" span="6">{{static.price}}</van-col>
-    </van-row>
-    <view class="btn-vip" bindtap="goChong">
-      <van-button size="mini" round type="info" color="#fdd100">会员充值 </van-button>
-    </view>
+
+  <!-- 轮播图 start -->
+  <view class="banner page-section page-section-spacing swiper">
+    <swiper indicator-dots="{{true}}" interval="{{2000}}">
+      <block wx:for="{{background}}" wx:key="index">
+        <swiper-item>
+          <image src="{{item}}" mode="widthFix"/>
+        </swiper-item>
+      </block>
+    </swiper>
   </view>
-  <image class="image" src="../../assets/image/index/process.png" mode="widthFix"/>
-  <view class="search-box">
-    <view bindtap="showTypeSelect">
-      <text class="tit">类型:</text>
-      <text class="text" wx:if="{{!type}}">请选择</text>
-      <text class="text" wx:else>{{type}}</text>
-    </view>
-    <view bindtap="showProvince">
-      <text class="tit">地区:</text>
-      <text class="text" wx:if="{{!sheng}}">请选择</text>
-      <text class="text" wx:else>{{sheng}}</text>
-    </view>
-    <view bindtap="showShiSelect">
-      <text class="text" wx:if="{{!shi}}">请选择</text>
-      <text class="text" wx:else>{{shi}}</text>
-    </view>
-    <view class="flex">
-      <text class="tit">师傅:</text>
-      <input class="input" value="{{shiname}}" bind:input="onNameChange" placeholder="请输入用户名"/>
-    </view>
-    <van-button type="primary" size="mini" color="#fdd100" bindtap="search">搜索</van-button>
-    <van-button class="clear" plain size="mini" color="#fdd100" bindtap="clearAll">清空</van-button>
+  <!-- 轮播图 end -->
+
+  <view class="title-box">
+    <text>热门推荐</text>
   </view>
-  <van-row style="width: 100%;overflow:hidden;" wx:if="{{masterList.length !== 0}}">
-    <van-col wx:for="{{masterList}}" wx:key="index" span="12">
-      <view data-id="{{item.master_id}}" class="shi" bindtap="goDetail">
-        <view class="shi-logo">
-          <image class="logo-bg" src="../../assets/image/index/shi-bg.png" mode="widthFix"/>
-          <image class="logo" src="{{item.headimgurl}}" mode="widthFix"/>
-          <!-- <image class="logo" src="../../assets/image/index/shi-logo.png" mode="widthFix"/> -->
-          <image wx:if="{{item.level_name==='金牌师傅'}}" class="pai" src="../../assets/image/index/pai1.png" mode="widthFix"/>
-          <image wx:if="{{item.level_name==='银牌师傅'}}" class="pai" src="../../assets/image/index/pai2.png" mode="widthFix"/>
-          <image wx:if="{{item.level_name==='铜牌师傅'}}" class="pai" src="../../assets/image/index/pai3.png" mode="widthFix"/>
+
+  <!-- 推荐 start -->
+  <view class="recommend-box">
+    <view class="goods-item">
+      <image class="goods-img" src="../../assets/goods1.png" mode="widthFix"/>
+      <view class="goods-tit">小米10最新款暗夜绿5G手机8+128G现货速发赶紧抢购吧顺丰包邮</view>
+      <view class="goods-bt">
+        <view>
+          <text class="z">¥5999.00</text>
+          <text class="y">¥6599.00</text>
         </view>
-        <view class="shi-name">
-          <image class="name-bg" src="../../assets/image/index/name-bg.png"/>
-          <view class="main-text">
-            <text class="bai1">{{item.level_name}}</text>
-            <text>{{item.true_name}}</text>
-            <text class="bai2">实名认证</text>
-          </view>
-        </view>
-        <view class="info-item">
-          <view class="half">保证金：
-            <van-icon class="yellow" wx:if="{{item.bond===1}}" name="success" />
-            <van-icon wx:else name="success" />
-          </view>
-          <view class="half">总评分：<text>{{item.ave_score}}分</text></view>
-        </view>
-        <view class="info-item">
-          <view class="half">实名认证：
-            <van-icon class="yellow" wx:if="{{item.is_check_true_name===1}}" name="success" />
-            <van-icon wx:else name="success" />
-          </view>
-          <view class="half">好评数：<text>{{item.good_count}}</text></view>
-        </view>
-        <view class="info-item">
-          <view class="half">游积分：<text>{{item.points}}</text></view>
-          <view class="half">好评率：<text>{{item.good_ave}}%</text></view>
-        </view>
-        <view class="info-item">
-          <view class="all">地区：<text>{{item.city}}</text></view>
-        </view>
-        <view class="info-item">
-          <view class="all">类型：<text>{{item.cate}}</text></view>
-        </view>
+        <view class="purchase">1.3万人购买</view>
       </view>
-    </van-col>
-  </van-row>
-  <view class="no-data-box" wx:else>
-    <image src="../../assets/no-data.png" class="no-img" mode="widthFix"/>
-    <view class="tips">抱歉，没有搜到数据~</view>
+    </view>
   </view>
-  <van-popup show="{{show}}" position="bottom" :overlay="true">
-    <van-picker show-toolbar title="请选择省份" value-key="name" columns="{{provinceList}}" bind:cancel="onCancel" bind:confirm="onConfirm" />
-  </van-popup>
-  <van-popup show="{{showType}}" position="bottom" :overlay="true">
-    <van-picker show-toolbar title="请选择类型" value-key="name" columns="{{columns}}" bind:cancel="typeCancel" bind:confirm="typeConfirm" />
-  </van-popup>
-  <van-popup show="{{showShi}}" position="bottom" :overlay="true">
-    <van-picker show-toolbar title="请选择城市" value-key="name" columns="{{cityList}}" bind:cancel="shiCancel" bind:confirm="shiConfirm" />
-  </van-popup>
+  <!-- 推荐 end -->
+
+  <view class="title-box">
+    <text>精选好物</text>
+  </view>
+
+  <!-- 精选好物 start -->
+  <view class="recommend-box">
+    <van-row gutter="20">
+      <van-col span="12" wx:for="{{6}}" wx:key="index">
+        <navigator url="/pages/log/log" class="best-item">
+          <image class="best-img" src="../../assets/goods2.png" mode="widthFix" />
+          <view class="best-tit">小米10最新款暗夜绿5G手机8+128G现货速发赶紧抢购吧顺丰包邮</view>
+          <view class="best-bt">
+            <text class="z">¥5999.00</text>
+            <text class="purchase">1.3万人购买</text>
+          </view>
+        </navigator>
+      </van-col>
+    </van-row>
+  </view>
+  <!-- 精选好物 end -->
+
   <van-toast id="van-toast" />
   <view class='goTop' wx:if='{{floorstatus}}' bindtap="goTop">
     <van-icon name="arrow-up" />

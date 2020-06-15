@@ -1,12 +1,16 @@
 /**app.wxss**/
 @import "/icon.wxss"
 page{
-  height: 100%;
+  min-height: 100%;
+  background-color: #F5F5F5;
 }
 .container {
-  height: 100%;
+  padding: 24rpx 30rpx;
   box-sizing: border-box;
 }
 .gray-bg{
-  background-color: #f0f3f6;
+  background-color: #F5F5F5;
+}
+view{
+  box-sizing: border-box;
 }

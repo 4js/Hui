@@ -1,8 +1,8 @@
 {
-  "navigationBarTitleText": "游工网",
+  "navigationBarTitleText": "惠汇精选",
   "usingComponents": {
-    "van-button": "@vant/weapp/button/index",
     "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
+    "van-button": "@vant/weapp/button/index",
     "van-popup": "@vant/weapp/popup/index",
     "van-picker": "@vant/weapp/picker/index",
     "van-row": "@vant/weapp/row/index",
