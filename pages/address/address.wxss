@@ -1,0 +1,41 @@
+.address-container {
+  width: 100vw;
+  min-height: 100vh;
+  padding: 20rpx 40rpx 0;
+  background-color: #fff;
+  position: relative;
+}
+.address-container .item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx 0;
+  border-bottom: 1px solid #F5F5F5;
+}
+.address-container .item .left {
+  flex: 1;
+}
+.address-container .item .left .user {
+  font-size: 32rpx;
+  color: #333;
+}
+.address-container .item .left .user text {
+  font-weight: 500;
+  padding-right: 20rpx;
+}
+.address-container .item .left .info {
+  margin-top: 20rpx;
+  color: #666;
+  line-height: 40rpx;
+  font-size: 26rpx;
+}
+.address-container .item .right {
+  width: 80rpx;
+  text-align: center;
+}
+.address-container button {
+  position: absolute;
+  width: 670rpx;
+  bottom: 54rpx;
+  box-shadow: 0 0 12rpx rgba(70, 123, 253, 0.58);
+}

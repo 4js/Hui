@@ -1,0 +1,50 @@
+<!--pages/addDress/addDress.wxml-->
+<!--pages/address/address.wxml-->
+<view class="container gray-bg add-dress-container">
+  <van-cell-group>
+    <van-field
+      value="{{ value }}"
+      label="收货人"
+      placeholder="请输入收货人"
+      bind:change="onChange"
+    />
+    <van-field
+      value="{{ phone }}"
+      label="联系电话"
+      placeholder="请输入联系电话"
+      bind:change="onChange"
+    />
+    <van-field
+      value="{{ area }}"
+      label="所在地区"
+      readonly
+      placeholder="请选择所在地区"
+      bindtap="showArea"
+    />
+    <van-field
+      value="{{ address }}"
+      label="详细地址"
+      placeholder="请输入详细地址"
+      bind:change="onChange"
+    />
+    <van-cell title="设置默认地址">
+      <van-switch  checked="{{ isMore }}" size="20px" />
+    </van-cell>
+  </van-cell-group>
+  <view class="gray-line" />
+  <van-cell>
+    <text slot="title" class="delete">删除该地址</text>
+  </van-cell>
+  <view>
+    <van-button round block type="info" color="#467BFD" class="btn-add">+ 新增收货地址</van-button>
+  </view>
+  <van-popup
+    show="{{ show }}"
+    position="bottom"
+    columns-placeholder="{{ ['请选择', '请选择', '请选择'] }}"
+    custom-style="height: 200px"
+    bind:close="onClose"
+  >
+    <van-area area-list="{{ areaList }}" bind:confirm="handleConfirm" bind:cancel="handleCancel"/>
+  </van-popup>
+</view>

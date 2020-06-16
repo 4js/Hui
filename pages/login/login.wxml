@@ -1,96 +1,22 @@
 <!--pages/login/login.wxml-->
 <view class="container gray-bg login-container">
-    <image class="logo" src="../../assets/image/logo.png" mode="widthFix"/>
-    <view class="main-box">
-        <van-tabs active="{{ active }}" color="#fdd100" bind:change="onChange">
-            <van-tab title="登录">
-                <view class="kong"></view>
-                <van-cell-group>
-                    <van-field
-                        value="{{ loginPhone }}"
-                        left-icon="phone-o"
-                        placeholder="请输入手机号"
-                        maxlength="11"
-                        data-k="loginPhone"
-                        bind:input="onChange"
-                    />
-                    <van-field
-                        value="{{ loginPassword }}"
-                        left-icon="paid"
-                        password="{{isShowPassword}}"
-                        placeholder="请输入密码"
-                        border="{{ false }}"
-                        maxlength="20"
-                        data-k="loginPassword"
-                        bind:input="onChange"
-                    />
-                    <van-divider />
-                    <view class="other">
-                        <!-- <text>记住账号密码</text> -->
-                        <navigator url="/pages/forget/forget" hover-class="className">忘记密码?</navigator>
-                    </view>
-                    <view class="kong"></view>
-                    <van-button type="primary" color="#fdd100" block bindtap="login">登录</van-button>
-                </van-cell-group>
-            </van-tab>
-            <van-tab title="注册">
-                <view class="kong"></view>
-                <van-cell-group>
-                    <van-field
-                        value="{{ regUsername }}"
-                        left-icon="contact"
-                        data-k="regUsername"
-                        maxlength="20"
-                        placeholder="请输入用户名"
-                        bind:input="onChange"
-                    />
-                    <van-field
-                        value="{{ regPhone }}"
-                        left-icon="phone-o"
-                        data-k="regPhone"
-                        maxlength="11"
-                        placeholder="请输入手机号码"
-                        bind:input="onChange"
-                    />
-                    <van-field
-                        value="{{ regPassword }}"
-                        left-icon="paid"
-                        data-k="regPassword"
-                        maxlength="20"
-                        password="{{isShowPassword}}"
-                        placeholder="请输入密码"
-                        border="{{ false }}"
-                        bind:input="onChange"
-                    />
-                    <van-field
-                        value="{{ regConPassword }}"
-                        left-icon="paid"
-                        maxlength="20"
-                        data-k="regConPassword"
-                        password="{{isShowPassword}}"
-                        placeholder="请再次输入密码"
-                        border="{{ false }}"
-                        bind:input="onChange"
-                    />
-                    <van-field
-                        value="{{ regSms }}"
-                        center
-                        clearable
-                        data-k="regSms"
-                        maxlength="8"
-                        left-icon="comment-o"
-                        placeholder="请输入验证码"
-                        border="{{ false }}"
-                        bind:input="onChange"
-                        use-button-slot
-                    >
-                        <van-button slot="button" size="small" type="primary" color="#fdd100" bindtap="startInter">{{ loading ? interval + '秒' : '获取验证码' }}</van-button>
-                    </van-field>
-                    <view class="kong"></view>
-                    <van-button type="primary" color="#fdd100" block bindtap="register">注册</van-button>
-                </van-cell-group>
-            </van-tab>
-        </van-tabs>
-    </view>
-    <van-toast id="van-toast" />
+  <view class="login-title">欢迎登录</view>
+
+  <!-- 表单 start -->
+  <view class="form">
+    <van-field
+      value="{{ phone }}"
+      placeholder="请输入用户名"
+      border="{{ false }}"
+      data-k="phone"
+      bind:change="onChange"
+    />
+    <van-button round block type="info" color="#467BFD" bindtap="login">登 录</van-button>
+  </view>
+  <!-- 表单 end -->
+  <view class="copyright">登录后即代表同意<text>《用户协议》</text>和<text>《隐私政策》</text></view>
+
+  <!-- 背景图 -->
+  <image class="login-bg" src="../../assets/login-bg.png" mode="widthFix" />
+  <van-toast id="van-toast" />
 </view>

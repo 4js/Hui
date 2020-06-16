@@ -1,8 +1,10 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/log/log",
+    "pages/addDress/addDress",
+    "pages/address/address",
     "pages/login/login",
+    "pages/log/log",
     "pages/mine/mine"
   ],
   "tabBar": {
@@ -14,6 +16,12 @@
         "selectedIconPath": "/assets/ahome.png",
         "pagePath": "pages/index/index",
         "text": "首页"
+      },
+      {
+        "iconPath": "/assets/cart.png",
+        "selectedIconPath": "/assets/acart.png",
+        "pagePath": "pages/address/address",
+        "text": "购物车"
       },
       {
         "iconPath": "/assets/mine.png",
