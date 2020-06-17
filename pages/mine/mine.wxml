@@ -53,10 +53,10 @@
         <view class="order-icon"><van-icon name="service-o" /></view>
         <view class="order-text">专属客服</view>
       </view>
-      <view class="order-item">
+      <navigator url="/pages/address/address" class="order-item">
         <view class="order-icon"><van-icon name="location-o" /></view>
         <view class="order-text">收获地址</view>
-      </view>
+      </navigator>
     </view>
     <!-- 服务 end -->
   </view>

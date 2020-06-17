@@ -1,7 +1,7 @@
 .address-container {
   width: 100vw;
   min-height: 100vh;
-  padding: 20rpx 40rpx 0;
+  padding: 20rpx 0 0;
   background-color: #fff;
   position: relative;
 }
@@ -9,7 +9,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30rpx 0;
+  padding: 30rpx 40rpx;
   border-bottom: 1px solid #F5F5F5;
 }
 .address-container .item .left {
@@ -37,5 +37,32 @@
   position: absolute;
   width: 670rpx;
   bottom: 54rpx;
+  left: 40rpx;
   box-shadow: 0 0 12rpx rgba(70, 123, 253, 0.58);
+}
+.delete {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.van-swipe-cell__left {
+  display: inline-block;
+  width: 65px;
+  height: 44px;
+  font-size: 15px;
+  line-height: 44px;
+  color: #fff;
+  text-align: center;
+  background-color: #54dd54;
+}
+.van-swipe-cell__right {
+  display: inline-block;
+  width: 65px;
+  height: 44px;
+  font-size: 15px;
+  line-height: 44px;
+  color: #fff;
+  text-align: center;
+  background-color: #f44;
 }

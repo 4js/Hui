@@ -5,7 +5,8 @@
     "pages/address/address",
     "pages/login/login",
     "pages/log/log",
-    "pages/mine/mine"
+    "pages/mine/mine",
+    "pages/cart/cart"
   ],
   "tabBar": {
     "color": "#999999",
@@ -20,7 +21,7 @@
       {
         "iconPath": "/assets/cart.png",
         "selectedIconPath": "/assets/acart.png",
-        "pagePath": "pages/address/address",
+        "pagePath": "pages/cart/cart",
         "text": "购物车"
       },
       {
