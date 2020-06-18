@@ -41,7 +41,7 @@
   <view class="recommend-box">
     <van-row gutter="20">
       <van-col span="12" wx:for="{{6}}" wx:key="index">
-        <navigator url="/pages/log/log" class="best-item">
+        <navigator url="/pages/content/content" class="best-item">
           <image class="best-img" src="../../assets/goods2.png" mode="widthFix" />
           <view class="best-tit">小米10最新款暗夜绿5G手机8+128G现货速发赶紧抢购吧顺丰包邮</view>
           <view class="best-bt">
