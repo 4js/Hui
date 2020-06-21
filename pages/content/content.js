@@ -1,4 +1,4 @@
-// pages/content/content.js
+import Toast from '@vant/weapp/toast/toast';
 Page({
 
   /**

@@ -1,0 +1,7 @@
+<!--pages/home/home.wxml-->
+<view class="home-container">
+    <image src="../../assets/yin-bg.png" mode="widthFix" />
+    <view class="bottom-btn">
+        <navigator url="/pages/login/login" redirect class="btn">立即登录</navigator>
+    </view>
+</view>

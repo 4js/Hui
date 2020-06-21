@@ -1,0 +1,50 @@
+<view class="container detail-container gray-bg">
+  <view class="status-box"><van-icon name="logistics" /><text>交易失败</text></view>
+  <view class="address-box">
+    <view class="location">
+      <image src="../../assets/loc.png" mode="widthFix"/>
+    </view>
+    <view>
+      <view class="username"><text>王哈哈</text>13878923232</view>
+      <view class="info">广东省深圳市宝安区西乡镇云西路23号三花现代城20栋888</view>
+    </view>
+  </view>
+  <view class="goods">
+    <view class="goods-item">
+      <view class="goods-img">
+        <image src="../../assets/goods3.png" mode="widthFix"/>
+      </view>
+      <view class="goods-tit">
+        <view class="title">爆款小米(MI)平衡车 Ninebot 号平衡车 4倍布行速度 智能电…</view>
+        <view class="desc">标准版白色</view>
+        <view class="price">
+          <text class="l">¥1999.00</text>
+        </view>
+      </view>
+    </view>
+    <view class="other-item">
+      <text class="lef">商品总额</text>
+      <text class="rig">¥1999.00</text>
+    </view>
+    <view class="other-item">
+      <text class="lef">抵扣总额</text>
+      <text class="rig red">-¥20.00</text>
+    </view>
+    <view class="other-item">
+      <text class="lef">运费</text>
+      <text class="rig">¥10.00</text>
+    </view>
+    <view class="other-item">
+      <text class="lef">实付款</text>
+      <text class="rig red">¥1979.00</text>
+    </view>
+  </view>
+  <view class="time-box">
+    <view>订单编号：8772357623872 <text>复制</text></view>
+    <view>下单时间：2020-06-20 13:22:30</view>
+  </view>
+  <view class="btn">
+    <van-button size="small" round type="default" class="lef">取消订单</van-button>
+    <van-button size="small" round type="primary" color="#FF3200">立即支付</van-button>
+  </view>
+</view>

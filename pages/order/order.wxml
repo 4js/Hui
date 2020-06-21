@@ -1,0 +1,35 @@
+<view class="container gray-bg">
+  <van-tabs active="{{ active }}" class="tab-box" color="#467BFD" bind:change="onChange">
+    <van-tab title="全部"></van-tab>
+    <van-tab title="待付款"></van-tab>
+    <van-tab title="待发货"></van-tab>
+    <van-tab title="待收货"></van-tab>
+    <van-tab title="已完成"></van-tab>
+  </van-tabs>
+  <view class="order-box">
+    <view class="order-item" wx:for="{{3}}" wx:key="index">
+      <view class="top">
+        <text class="left">2020.04.30 12:09</text>
+        <text class="right">待付款</text>
+      </view>
+      <view class="goods-item">
+        <view class="goods-img">
+          <image src="../../assets/goods3.png" mode="widthFix"/>
+        </view>
+        <view class="goods-tit">
+          <view class="title">爆款小米(MI)平衡车 Ninebot 号平衡车 4倍布行速度 智能电…</view>
+          <view class="desc">标准版白色</view>
+          <view class="price">
+            <text class="l">¥1999.00</text>
+            <text>X1</text>
+          </view>
+        </view>
+      </view>
+      <view class="shi">实付款：<text>¥1999.00</text></view>
+      <view class="btn-bottom">
+        <van-button size="small" round type="default" class="lef">取消订单</van-button>
+        <van-button size="small" round type="primary" color="#FF3200">立即支付</van-button>
+      </view>
+    </view>
+  </view>
+</view>
