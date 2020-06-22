@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "惠汇精选",
+  "navigationBarTitleText": "我的",
   "usingComponents": {
     "van-icon": "@vant/weapp/icon/index"
   }

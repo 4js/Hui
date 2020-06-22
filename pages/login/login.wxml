@@ -11,7 +11,7 @@
       data-k="phone"
       bind:change="onChange"
     />
-    <van-button round block type="info" color="#467BFD" bindtap="login">登 录</van-button>
+    <van-button round block type="info" color="#467BFD" open-type="getUserInfo" bind:getuserinfo="login">登 录</van-button>
   </view>
   <!-- 表单 end -->
   <view class="copyright">登录后即代表同意<text>《用户协议》</text>和<text>《隐私政策》</text></view>

@@ -3,13 +3,13 @@ import conf from "../config.js"
 const method = ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'HEAD', 'TRACE', 'CONNECT'];
 
 function prompt(e = {}, op, reject, resolve) {
-  let title = e.info || '错误 ！';
+  let title = e.message || '错误 ！';
   if (!title) return;
   let icon = 'success';
-  if (e.status !== 1) {
+  if (e.code !== 1) {
     icon = 'none';
-    reject(title, e.info)
-  } else if (resolve) resolve(e);
+    reject(title, e.data)
+  } else if (resolve) resolve(e.data);
   if (op.prompt !== false) wx.showToast({
     title,
     icon,

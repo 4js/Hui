@@ -1,5 +1,5 @@
 // pages/login/login.js
-import { userLogin, userRegister, msgCode, checkUserPhone } from '../../utils/api'
+import { userLogin, userRegister, msgCode, getOpenid } from '../../utils/api'
 import Toast from '@vant/weapp/toast/toast';
 
 Page({
@@ -8,8 +8,25 @@ Page({
     phone: ''
   },
 
+
+  onShow(){
+    wx.login({
+      success (res) {
+        if (res.code) {
+          //发起网络请求
+          getOpenid({code: res.code}).then(res => {
+            console.log(res)
+          })
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    })
+  },
+
   // 登录按钮
-  login(){
+  login(e){
+    console.log(e)
     const { phone } = this.data
 
     if (!phone){

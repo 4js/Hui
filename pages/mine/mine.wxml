@@ -6,7 +6,7 @@
       <image src="../../assets/avater.png" mode="widthFix" />
     </view>
     <view class="title">
-      <view class="username">冯皓诚</view>
+      <navigator url="/pages/login/login" class="username">登录/注册</navigator>
       <text class="desc">抵扣余额 ¥200 | 7天后到期</text>
     </view>
   </view>
@@ -16,7 +16,7 @@
   <view class="order-box">
     <view class="tp">
       <text class="title">我的订单</text>
-      <navigator url="/pages/log/log" class="more">全部订单 ></navigator>
+      <navigator url="/pages/order/order" class="more">全部订单 ></navigator>
     </view>
     <view class="bt-box">
       <view class="order-item">
