@@ -6,3 +6,10 @@ export function getOpenid(params) {
     prompt: false
   }, 1);
 }
+
+// 微信支付
+export function openPay(params) {
+  return request('/?c=payment&a=wxpay&v=app&site=goods', params, {
+    prompt: false
+  }, 1);
+}
