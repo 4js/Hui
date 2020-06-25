@@ -1,6 +1,8 @@
 // pages/home/home.js
 import Toast from '@vant/weapp/toast/toast';
 import { openPay, getOpenid } from '../../utils/api'
+const app = getApp()
+
 Page({
 
   /**
@@ -17,7 +19,7 @@ Page({
         if (res.code) {
           //发起网络请求
           getOpenid({code: res.code}).then(resp => {
-            console.log(resp)
+            app.globalData.openid = resp.openid // 存到全局数据里
             _this.setData({
               openid: resp.openid
             })

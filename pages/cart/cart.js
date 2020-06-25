@@ -1,4 +1,7 @@
-// pages/cart/cart.js
+import { getCartList } from '../../utils/api'
+import Toast from '@vant/weapp/toast/toast'
+import Dialog from '@vant/weapp/dialog/dialog'
+
 Page({
 
   // 页面的初始数据
@@ -9,13 +12,12 @@ Page({
     result: ['a', 'b']
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  // 生命周期函数--监听页面加载
+  onShow: function (options) {
+    getCartList().then(resp => {
+      console.log(resp)
+    }).catch(err => Toast(err))
   },
-
 
   changeAll(e){
     this.setData({
@@ -27,7 +29,29 @@ Page({
   singleChange(e){
     this.setData({
       checkList: e.detail
+    }, function(){
+      console.log(this.data.checkList)
     })
+  },
+
+   // 删除单个商品
+  delete(event){
+    const { position, instance } = event.detail;
+    switch (position) {
+      case 'left':
+      case 'cell':
+        instance.close()
+        break
+      case 'right':
+        Dialog.confirm({
+          message: '确定删除吗？',
+        }).then(() => {
+          instance.close()
+        }).catch(() => {
+          instance.close()
+        })
+        break
+    }
   },
 
   onChangeNum(e){
@@ -36,19 +60,6 @@ Page({
 
   noop(e){
     console.log(e)
-  },
-
-  toggle(event) {
-    const { index } = event.currentTarget.dataset;
-    const checkbox = this.selectComponent(`.checkboxes-${index}`);
-    checkbox.toggle();
-  },
-
-
-  onChange(event) {
-    this.setData({
-      result: event.detail
-    });
   }
 
 })

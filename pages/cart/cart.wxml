@@ -2,13 +2,14 @@
 <view class="container gray-bg cart-container">
 
   <van-checkbox-group value="{{ checkList }}" bind:change="singleChange">
-    <van-swipe-cell  wx:for="{{ list }}" wx:key="index" right-width="{{ 65 }}" bind:click="toggle" data-index="{{ index }}">
+    <van-swipe-cell  wx:for="{{ list }}" wx:key="index" right-width="{{ 65 }}" data-index="{{ index }}" async-close bind:close="delete">
       <view class="goods-item">
         <view class="check-box">
           <van-checkbox
             checked-color="#FF3200"
             catch:tap="noop"
             name="{{ item }}"
+            label-disabled
             class="checkboxes-{{ index }}"
           />
         </view>
@@ -38,5 +39,8 @@
       <van-checkbox value="{{ checkedAll }}" checked-color="#FF3200" bind:change="changeAll">全选</van-checkbox>
     </van-submit-bar>
   </view>
+
+  <van-toast id="van-toast" />
+  <van-dialog id="van-dialog" />
 </view>
 

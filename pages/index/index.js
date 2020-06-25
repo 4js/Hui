@@ -1,8 +1,6 @@
-//index.js
-//获取应用实例
-const app = getApp()
-// import { getCityList, getMasterList, getCate } from '../../utils/api'
+import { getIndexGoods } from '../../utils/api'
 import Toast from '@vant/weapp/toast/toast';
+const app = getApp()
 
 Page({
   data: {
@@ -20,6 +18,9 @@ Page({
   onShow(){
     const token = wx.getStorageSync('token')
     this.setData({token})
+    getIndexGoods().then(res => {
+      console.log(res)
+    })
   },
 
   // 页面滚动事件
@@ -47,7 +48,5 @@ Page({
         content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
       })
     }
-  },
-
-
+  }
 })
