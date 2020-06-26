@@ -92,6 +92,13 @@ export function deleteAddress(params) {
   }, 1);
 }
 
+// 获取地址列表
+export function getArea(params) {
+  return request('/?c=area&a=arealist&v=app&site=user', params, {
+    prompt: false
+  }, 1);
+}
+
 // 订单列表
 export function getOrderList(params) {
   return request('/?c=order&a=orderlist&v=app&site=goods', params, {

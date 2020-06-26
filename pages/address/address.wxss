@@ -33,11 +33,13 @@
   width: 80rpx;
   text-align: center;
 }
-.address-container button {
+.address-container .btn-add {
   position: absolute;
   width: 670rpx;
   bottom: 54rpx;
   left: 40rpx;
+}
+.address-container .btn-add > button {
   box-shadow: 0 0 12rpx rgba(70, 123, 253, 0.58);
 }
 .delete {

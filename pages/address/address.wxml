@@ -1,13 +1,13 @@
 <!--pages/address/address.wxml-->
 <view class="container gray-bg address-container">
-  <van-swipe-cell right-width="{{ 65 }}" wx:for="{{list}}" wx:key="index" async-close bind:close="delete">
+  <van-swipe-cell right-width="{{ 65 }}" wx:for="{{list}}" wx:key="index" async-close bind:close="delete" data-id="{{item.address_id}}">
     <van-cell-group>
       <view class="item">
         <view class="left">
           <view class="user"><text>{{item.true_name}}</text>{{item.address_tel}}</view>
           <view class="info">{{item.province_name}}{{item.city_name}}{{item.county_name}}{{item.datail_address}}</view>
         </view>
-        <view class="right">
+        <view class="right" bindtap="edit" data-id="{{item.address_id}}">
           <van-icon name="edit" />
         </view>
       </view>

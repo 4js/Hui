@@ -1,6 +1,6 @@
 const app = getApp()
 import area from '../../utils/area'
-import { updateAddress } from '../../utils/api'
+import { updateAddress, getArea } from '../../utils/api'
 import Toast from '@vant/weapp/toast/toast';
 
 Page({
@@ -9,6 +9,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    address_id: '',
     username: '',
     phone: '',
     areaFull: '',
@@ -16,7 +17,7 @@ Page({
     city_id: '',
     county_id: '',
     address: '',
-    isMore: true,
+    isDefault: true,
     show: false, // 是否展示省市区弹框
     areaList: area
   },
@@ -24,6 +25,64 @@ Page({
   // 生命周期函数--监听页面显示
   onShow: function () {
     console.log(area)
+    const _this = this
+    wx.getStorage({
+      key: 'address',
+      success (res) {
+        const address = JSON.parse(res.data)
+        const { 
+          province_name,
+          city_name,
+          county_name,
+          address_id,
+          true_name,
+          address_tel,
+          province_id,
+          city_id,
+          county_id,
+          datail_address,
+          address_default
+        } = address
+        _this.setData({
+          address_id: address_id,
+          username: true_name,
+          phone: address_tel,
+          areaFull: province_name + city_name + county_name,
+          province_id: province_id,
+          city_id: city_id,
+          county_id: county_id,
+          address: datail_address,
+          isDefault: address_default === '2' ? true : false,
+        })
+        console.log(res.data)
+      },
+      fail(){
+        console.log('编辑')
+        _this.setData({
+          address_id: '',
+          username: '',
+          phone: '',
+          areaFull: '',
+          province_id: '',
+          city_id: '',
+          county_id: '',
+          address: '',
+          isDefault: false,
+        })
+      }
+    })
+    // getArea().then(res => {
+    //   console.log(res)
+      // _this.setData({
+      //   areaList: res
+      // })
+    // })
+  },
+
+  defaultChange({ detail }){
+    this.setData({
+      isDefault: detail
+    })
   },
 
   // 展示省市区选择框
@@ -67,7 +126,7 @@ Page({
 
   // 点击按钮新增地址
   addAddress(){
-    const { username, phone, areaFull, address, province_id, city_id, county_id } = this.data
+    const { address_id, username, phone, areaFull, address, province_id, city_id, county_id, isDefault } = this.data
 
     if (!username){
       Toast('请填写用户名');
@@ -96,17 +155,20 @@ Page({
     });
 
     const wx_openid = app.globalData.openid
-    updateAddress({ 
+    const addressObj = {
       true_name: username,
       address_tel: phone,
       datail_address: address,
-      address_default: 1,
+      address_default: isDefault ? 2 : 1,
       wx_openid,
       province_id,
       city_id,
-      county_id,
-    }).then(res => {
-      Toast('添加成功')
+      county_id
+    }
+    // 如果有id 则是编辑
+    if (address_id) addressObj.address_id = address_id
+    updateAddress(addressObj).then(res => {
+      Toast(address_id ? '编辑成功' : '添加成功')
       setTimeout(function(){
         //跳转回列表页
         wx.navigateBack({

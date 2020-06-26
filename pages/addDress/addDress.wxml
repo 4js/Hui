@@ -31,15 +31,15 @@
       bind:change="onChange"
     />
     <van-cell title="设置默认地址">
-      <van-switch  checked="{{ isMore }}" size="20px" />
+      <van-switch  checked="{{ isDefault }}" size="20px" bind:change="defaultChange" />
     </van-cell>
   </van-cell-group>
   <view class="gray-line" />
-  <van-cell>
+  <!-- <van-cell>
     <text slot="title" class="delete">删除该地址</text>
-  </van-cell>
+  </van-cell> -->
   <view>
-    <van-button round block type="info" color="#467BFD" class="btn-add" bindtap="addAddress">+ 新增收货地址</van-button>
+    <van-button round block type="info" color="#467BFD" class="btn-add" bindtap="addAddress">提 交</van-button>
   </view>
   <van-popup
     show="{{ show }}"
