@@ -7,6 +7,13 @@ export function getOpenid(params) {
   }, 1);
 }
 
+// 是否绑定过
+export function hasBind(params) {
+  return request('/?c=user&a=isband&v=app&site=user', params, {
+    prompt: false
+  }, 1);
+}
+
 // 登录
 export function toLogin(params) {
   return request('/?c=user&a=verify&v=app&site=user', params, {

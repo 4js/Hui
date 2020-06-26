@@ -76,6 +76,7 @@
 .best-item .best-bt .purchase{
   color: #9E9E9E;
   font-size: 24rpx;
+  text-decoration:line-through
 }
 
 

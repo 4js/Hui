@@ -1,27 +1,33 @@
 <!--pages/content/content.wxml-->
 <view class="gray-bg content-container">
-  <view>
-    <image class="goods-image" src="../../assets/goods4.png" />
+  <view class="banner page-section page-section-spacing swiper">
+    <swiper class="swiper" indicator-dots="{{true}}" interval="{{2000}}" autoplay="{{true}}">
+      <swiper-item wx:for="{{cover_img}}" wx:key="index">
+        <image class="goods-image" src="{{item}}" mode="widthFix"/>
+      </swiper-item>
+    </swiper>
   </view>
   <view class="main">
     <view class="goods-info">
       <view class="top">
-        <view class="price">¥1999.00<text>2399.00</text></view>
+        <view class="price">¥{{goodInfo.goods_price}}<text>{{goodInfo.goods_original_price}}</text></view>
         <view class="purchase">2314人付款</view>
       </view>
-      <view class="title">爆款小米(MI)平衡车 Ninebot 九号平衡车 4倍布行速度 智能电动体感车</view>
-      <view class="desc">九号平衡车标准版白色</view>
+      <view class="title">{{goodInfo.goods_name}}</view>
+      <view class="desc">{{goodInfo.model}}</view>
     </view>
     <view class="desc-tit"><text />商品详情</view>
-    <image class="info-image" src="../../assets/goods4.png" mode="widthFix"/>
+    <view class="info">
+      <image wx:for="{{detail_img}}" wx:key="index" class="info-image" src="{{item}}" mode="widthFix"/>
+    </view>
   </view>
   <van-goods-action>
-    <van-goods-action-icon icon="chat-o" text="客服" bind:click="onClickIcon" />
-    <van-goods-action-icon icon="cart-o" text="购物车" bind:click="onClickIcon" />
+    <van-goods-action-icon icon="chat-o" open-type="contact" text="客服" />
+    <van-goods-action-icon icon="cart-o" text="购物车" />
     <van-goods-action-button
       text="加入购物车"
       type="warning"
-      bind:click="onClickButton"
+      bind:click="addCart"
     />
     <van-goods-action-button text="立即购买" bind:click="onClickButton" />
   </van-goods-action>

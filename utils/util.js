@@ -14,6 +14,13 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const getOptions = function(){
+  const pages = getCurrentPages();
+  const currentPage = pages[pages.length-1];
+  return currentPage.options
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  getOptions
 }

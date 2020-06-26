@@ -1,11 +1,11 @@
 <!--pages/address/address.wxml-->
 <view class="container gray-bg address-container">
-  <van-swipe-cell right-width="{{ 65 }}" wx:for="{{5}}" wx:key="index">
+  <van-swipe-cell right-width="{{ 65 }}" wx:for="{{list}}" wx:key="index" async-close bind:close="delete">
     <van-cell-group>
       <view class="item">
         <view class="left">
-          <view class="user"><text>冯皓诚</text>13552673673</view>
-          <view class="info">北京市西城区北京西站三花路28号9栋909</view>
+          <view class="user"><text>{{item.true_name}}</text>{{item.address_tel}}</view>
+          <view class="info">{{item.province_name}}{{item.city_name}}{{item.county_name}}{{item.datail_address}}</view>
         </view>
         <view class="right">
           <van-icon name="edit" />
@@ -17,4 +17,5 @@
   <view>
     <van-button round block type="info" color="#467BFD" class="btn-add" bindtap="toAdd">+ 新增收货地址</van-button>
   </view>
+  <van-dialog id="van-dialog" />
 </view>

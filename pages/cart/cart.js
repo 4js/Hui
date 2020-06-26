@@ -1,6 +1,7 @@
 import { getCartList } from '../../utils/api'
 import Toast from '@vant/weapp/toast/toast'
 import Dialog from '@vant/weapp/dialog/dialog'
+const app = getApp()
 
 Page({
 
@@ -13,8 +14,9 @@ Page({
   },
 
   // 生命周期函数--监听页面加载
-  onShow: function (options) {
-    getCartList().then(resp => {
+  onShow: function () {
+    const wx_openid = app.globalData.openid
+    getCartList({ wx_openid }).then(resp => {
       console.log(resp)
     }).catch(err => Toast(err))
   },
@@ -34,7 +36,7 @@ Page({
     })
   },
 
-   // 删除单个商品
+  // 删除单个商品
   delete(event){
     const { position, instance } = event.detail;
     switch (position) {

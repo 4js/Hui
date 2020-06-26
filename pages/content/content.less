@@ -1,11 +1,17 @@
 .content-container{
+  .swiper{
+    height: 560rpx;
+    .wx-swiper-dot{
+      bottom: 200rpx;
+    }
+  }
   .goods-image{
     width: 750rpx;
   }
   .main{
     position: relative;
-    top: -60rpx;
-    padding-bottom: 40rpx;
+    top: -80rpx;
+    padding-bottom: 20rpx;
     .goods-info{
       padding: 30rpx;
       background-color: #fff;
@@ -62,8 +68,13 @@
         margin-right: 12rpx;
       }
     }
-    .info-image{
-      width: 750rpx;
+    .info{
+      display: flex;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      .info-image{
+        width: 750rpx;
+      }
     }
   }
 }

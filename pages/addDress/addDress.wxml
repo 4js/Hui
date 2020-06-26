@@ -3,19 +3,21 @@
 <view class="container gray-bg add-dress-container">
   <van-cell-group>
     <van-field
-      value="{{ value }}"
+      value="{{ username }}"
       label="收货人"
       placeholder="请输入收货人"
+      data-k="username"
       bind:change="onChange"
     />
     <van-field
       value="{{ phone }}"
       label="联系电话"
+      data-k="phone"
       placeholder="请输入联系电话"
       bind:change="onChange"
     />
     <van-field
-      value="{{ area }}"
+      value="{{ areaFull }}"
       label="所在地区"
       readonly
       placeholder="请选择所在地区"
@@ -25,6 +27,7 @@
       value="{{ address }}"
       label="详细地址"
       placeholder="请输入详细地址"
+      data-k="address"
       bind:change="onChange"
     />
     <van-cell title="设置默认地址">
@@ -36,7 +39,7 @@
     <text slot="title" class="delete">删除该地址</text>
   </van-cell>
   <view>
-    <van-button round block type="info" color="#467BFD" class="btn-add">+ 新增收货地址</van-button>
+    <van-button round block type="info" color="#467BFD" class="btn-add" bindtap="addAddress">+ 新增收货地址</van-button>
   </view>
   <van-popup
     show="{{ show }}"
@@ -47,4 +50,5 @@
   >
     <van-area area-list="{{ areaList }}" bind:confirm="handleConfirm" bind:cancel="handleCancel"/>
   </van-popup>
+  <van-toast id="van-toast" />
 </view>

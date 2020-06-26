@@ -54,10 +54,25 @@
     width: 130rpx;
     height: 136rpx;
 }
+.button-item{
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  border: 0;
+}
+.button-item::after{
+  border: 0;
+}
 .order-item .order-icon{
     text-align: center;
     font-size: 60rpx;
     color: #333;
+}
+.service-icon{
+    height: 72rpx;
+}
+.order-item .order-icon .van-icon-service-o{
+    top: -34rpx;
 }
 .order-item .order-text{
     font-size: 24rpx;

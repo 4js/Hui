@@ -3,11 +3,11 @@
   <!-- 头像 start -->
   <view class="user-box">
     <view class="avater" >
-      <image src="../../assets/avater.png" mode="widthFix" />
+      <image src="{{userInfo.wx_avatar}}" mode="widthFix" />
     </view>
     <view class="title">
-      <navigator url="/pages/login/login" class="username">登录/注册</navigator>
-      <text class="desc">抵扣余额 ¥200 | 7天后到期</text>
+      <navigator url="/pages/login/login" class="username">{{userInfo.wx_name}}</navigator>
+      <text class="desc">抵扣余额 ¥{{userInfo.coupon_money}} | 7天后到期</text>
     </view>
   </view>
   <!-- 头像 end -->
@@ -49,10 +49,10 @@
       <text class="title">我的服务</text>
     </view>
     <view class="bt-box">
-      <view class="order-item">
-        <view class="order-icon"><van-icon name="service-o" /></view>
+      <button class="order-item button-item" open-type="contact">
+        <view class="order-icon service-icon"><van-icon name="service-o" /></view>
         <view class="order-text">专属客服</view>
-      </view>
+      </button>
       <navigator url="/pages/address/address" class="order-item">
         <view class="order-icon"><van-icon name="location-o" /></view>
         <view class="order-text">收获地址</view>

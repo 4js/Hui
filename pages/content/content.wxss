@@ -1,10 +1,16 @@
+.content-container .swiper {
+  height: 560rpx;
+}
+.content-container .swiper .wx-swiper-dot {
+  bottom: 200rpx;
+}
 .content-container .goods-image {
   width: 750rpx;
 }
 .content-container .main {
   position: relative;
-  top: -60rpx;
-  padding-bottom: 40rpx;
+  top: -80rpx;
+  padding-bottom: 20rpx;
 }
 .content-container .main .goods-info {
   padding: 30rpx;
@@ -62,6 +68,11 @@
   background-color: #FF3200;
   margin-right: 12rpx;
 }
-.content-container .main .info-image {
+.content-container .main .info {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.content-container .main .info .info-image {
   width: 750rpx;
 }

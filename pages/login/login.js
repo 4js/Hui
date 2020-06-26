@@ -59,7 +59,9 @@ Page({
       Toast('登录成功');
       try {
         wx.setStorageSync('openid', openid)
-        wx.navigateBack()
+        wx.switchTab({
+          url: '/pages/index/index'
+        })
       } catch (e) {}
     }).catch(err => {
       Toast(err)
