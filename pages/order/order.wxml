@@ -1,27 +1,31 @@
 <view class="container gray-bg">
   <van-tabs active="{{ active }}" class="tab-box" color="#467BFD" bind:change="onChange">
-    <van-tab title="全部"></van-tab>
-    <van-tab title="待付款"></van-tab>
-    <van-tab title="待发货"></van-tab>
-    <van-tab title="待收货"></van-tab>
-    <van-tab title="已完成"></van-tab>
+    <van-tab title="待付款" name="1"></van-tab>
+    <van-tab title="待发货" name="2"></van-tab>
+    <van-tab title="待收货" name="4"></van-tab>
+    <van-tab title="已完成" name="5"></van-tab>
+    <van-tab title="已退款" name="3"></van-tab>
   </van-tabs>
-  <view class="order-box">
-    <view class="order-item" wx:for="{{3}}" wx:key="index">
+  <view class="no-data-box" wx:if="{{list.length === 0}}">
+    <image src="../../assets/no-data.png" class="no-img" mode="widthFix"/>
+    <view class="tips">还没有订单奥，快去下单吧~</view>
+  </view>
+  <view class="order-box" wx:else>
+    <view class="order-item" wx:for="{{list}}" wx:key="index">
       <view class="top">
         <text class="left">2020.04.30 12:09</text>
         <text class="right">待付款</text>
       </view>
-      <view class="goods-item">
+      <view class="goods-item" wx:for="{{item.goods_info}}" wx:for-item="goodItem" wx:key="index">
         <view class="goods-img">
           <image src="../../assets/goods3.png" mode="widthFix"/>
         </view>
         <view class="goods-tit">
-          <view class="title">爆款小米(MI)平衡车 Ninebot 号平衡车 4倍布行速度 智能电…</view>
+          <view class="title">{{goodItem.goods_name}}</view>
           <view class="desc">标准版白色</view>
           <view class="price">
             <text class="l">¥1999.00</text>
-            <text>X1</text>
+            <text>X{{goodItem.goods_count}}</text>
           </view>
         </view>
       </view>

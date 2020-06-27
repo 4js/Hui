@@ -1,4 +1,5 @@
 import { getAddressList, deleteAddress } from '../../utils/api'
+import { getOptions } from '../../utils/util'
 import Toast from '@vant/weapp/toast/toast'
 import Dialog from '@vant/weapp/dialog/dialog'
 const app = getApp()
@@ -72,4 +73,21 @@ Page({
         break
     }
   },
+
+  // 选择地址
+  selectAddress(e){
+    const options = getOptions()
+    const { id } = e.currentTarget.dataset
+    // 判断是不是从下单那边过来
+    if (!options.url) return false
+    const address = this.data.list.find(item => item.address_id === id)
+    // 保存到storage里
+    wx.setStorage({
+      key: 'selectAddress',
+      data: JSON.stringify(address),
+      success: function(){
+        wx.navigateBack()
+      }
+    })
+  }
 })

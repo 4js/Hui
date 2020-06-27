@@ -1,5 +1,5 @@
 import { getOptions } from '../../utils/util'
-import { getOneGoods, addGoodsCart } from '../../utils/api'
+import { getOneGoods, addGoodsCart, createOrder } from '../../utils/api'
 import Toast from '@vant/weapp/toast/toast';
 const app = getApp()
 Page({
@@ -38,8 +38,24 @@ Page({
     }).catch(err => Toast(err))
   },
 
-  onClickButton() {
-    Toast('点击按钮');
+  goPurchase() {
+    Toast.loading({
+      mask: true,
+      message: '下单中...',
+    });
+    const { goods_id, 'openid': wx_openid } = this.data
+    createOrder({wx_openid, goods_list: [{ 'goods_id': goods_id, 'goods_count': 1 }]}).then(res => {
+      if (res && res.order_id) {
+        setTimeout(function(){
+          Toast.clear()
+          wx.navigateTo({
+            url: '/pages/confirm/confirm?d=' + res.order_id
+          })
+        }, 1000)
+      } else { Toast.clear()}
+    }).catch(err => {
+      Toast.clear()
+      Toast(err)
+    })
   }
-
 })

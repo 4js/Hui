@@ -13,3 +13,22 @@ page{
 view{
   box-sizing: border-box;
 }
+
+.no-data-box{
+  width: 100%;
+  padding: 140rpx 0 60rpx;
+  text-align: center;
+}
+
+.no-data-box image {
+  width: 400rpx;
+  height: auto;
+}
+
+.no-data-box .tips{
+  margin-top: 60rpx;
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 60rpx;
+  color: #ccc;
+}

@@ -3,10 +3,10 @@
     <view class="location">
       <image src="../../assets/loc.png" mode="widthFix"/>
     </view>
-    <navigator url="/pages/address/address">
-      <!-- <view class="username"><text>王哈哈</text>13878923232</view>
-      <view class="info">广东省深圳市宝安区西乡镇云西路23号三花现代城20栋888</view> -->
-      <view class="select">请选择收货地址<van-icon class="icon" name="arrow" /></view>
+    <navigator url="/pages/address/address?url=confirm">
+      <view wx:if="{{orderInfo.address}}" class="username"><text>{{userName}}</text>{{userTel}}</view>
+      <view wx:if="{{orderInfo.address}}" class="info">{{address}}</view>
+      <view wx:if="{{!orderInfo.address}}" class="select">请选择收货地址<van-icon class="icon" name="arrow" /></view>
     </navigator>
   </view>
   <view class="goods">
@@ -24,27 +24,27 @@
     </view>
     <view class="other-item">
       <text class="lef">商品总额</text>
-      <text class="rig">¥1999.00</text>
+      <text class="rig">¥{{orderInfo.total_goods_price}}</text>
     </view>
     <view class="other-item">
       <text class="lef">抵扣总额</text>
-      <text class="rig red">-¥20.00</text>
+      <text class="rig red">-¥{{orderInfo.total_coupon_price}}</text>
     </view>
     <view class="other-item">
       <text class="lef">运费</text>
-      <text class="rig">¥10.00</text>
+      <text class="rig">¥{{orderInfo.total_area_price}}</text>
     </view>
     <view class="other-item">
       <text class="lef">实付款</text>
-      <text class="rig red">¥1979.00</text>
+      <text class="rig red">¥{{orderInfo.total_pay_money}}</text>
     </view>
   </view>
   <view class="time-box">
-    <view>订单编号：8772357623872 <text>复制</text></view>
+    <view>订单编号：{{orderInfo.order_sn}} <text data-text="{{orderInfo.order_sn}}" bindtap='copyText'>复制</text></view>
     <view>下单时间：2020-06-20 13:22:30</view>
   </view>
   <view class="btn">
-    <text class="gray">共 1 件，合计：</text><text class="red">¥1979.00</text>
-    <van-button size="small" round type="primary" color="#FF3200">立即支付</van-button>
+    <text class="gray">共 1 件，合计：</text><text class="red">¥{{orderInfo.total_pay_money}}</text>
+    <van-button size="small" round type="primary" color="#FF3200" bindtap="pay">立即支付</van-button>
   </view>
 </view>

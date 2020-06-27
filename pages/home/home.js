@@ -58,28 +58,6 @@ Page({
         })
       }
     }).catch(err => Toast(err))
-  },
-
-  pay(){
-    const { openid } = this.data
-    openPay({
-      order_id: 82,
-      wx_openid: openid
-    }).then(response => {
-      wx.requestPayment({
-        timeStamp: response.timeStamp,
-        nonceStr: response.nonceStr,
-        package: response.package,
-        signType: response.signType,
-        paySign: response.paySign,
-        success (res) { 
-          Toast('支付成功')
-        },
-        fail (res) {
-          Toast('支付失败')
-        }
-      })
-    })
   }
   
 })

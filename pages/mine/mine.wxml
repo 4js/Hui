@@ -16,26 +16,26 @@
   <view class="order-box">
     <view class="tp">
       <text class="title">我的订单</text>
-      <navigator url="/pages/order/order" class="more">全部订单 ></navigator>
+      <navigator url="/pages/order/order?t=1" class="more">全部订单 ></navigator>
     </view>
     <view class="bt-box">
-      <view class="order-item">
-        <view class="order-icon"><van-icon name="pending-payment" info="2" /></view>
+      <view class="order-item" data-t='1' bindtap="goOrderList">
+        <view class="order-icon"><van-icon name="pending-payment" /></view>
         <view class="order-text">待付款</view>
       </view>
-      <view class="order-item">
+      <view class="order-item" data-t='2' bindtap="goOrderList">
         <view class="order-icon"><van-icon name="send-gift-o" /></view>
         <view class="order-text">待发货</view>
       </view>
-      <view class="order-item">
+      <view class="order-item" data-t='4' bindtap="goOrderList">
         <view class="order-icon"><van-icon name="logistics" /></view>
         <view class="order-text">待收货</view>
       </view>
-      <view class="order-item">
+      <view class="order-item" data-t='5' bindtap="goOrderList">
         <view class="order-icon"><van-icon name="sign" /></view>
         <view class="order-text">已完成</view>
       </view>
-      <view class="order-item">
+      <view class="order-item" data-t='3' bindtap="goOrderList">
         <view class="order-icon"><van-icon name="cash-back-record" /></view>
         <view class="order-text">已退款</view>
       </view>

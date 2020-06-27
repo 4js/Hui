@@ -18,6 +18,12 @@ Page({
         userInfo: resp
       })
     })
+  },
+
+  goOrderList(e){
+    wx.navigateTo({
+      url: '/pages/order/order?t=' + e.currentTarget.dataset.t
+    })
   }
 
 })

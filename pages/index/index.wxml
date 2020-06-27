@@ -19,17 +19,17 @@
 
   <!-- 推荐 start -->
   <view class="recommend-box">
-    <view class="goods-item">
-      <image class="goods-img" src="../../assets/goods1.png" mode="widthFix"/>
-      <view class="goods-tit">小米10最新款暗夜绿5G手机8+128G现货速发赶紧抢购吧顺丰包邮</view>
+    <navigator class="goods-item" wx:for="{{quality_goods}}" wx:key="index" url="/pages/content/content?d={{item.goods_id}}">
+      <image class="goods-img" src="{{item.banner_img}}" mode="widthFix"/>
+      <view class="goods-tit">{{item.goods_name}}</view>
       <view class="goods-bt">
         <view>
-          <text class="z">¥5999.00</text>
-          <text class="y">¥6599.00</text>
+          <text class="z">¥{{item.goods_price}}</text>
+          <text class="y">¥{{item.goods_original_price}}</text>
         </view>
-        <view class="purchase">1.3万人购买</view>
+        <view class="purchase">{{item.goods_sn}}人购买</view>
       </view>
-    </view>
+    </navigator>
   </view>
   <!-- 推荐 end -->
 
@@ -41,8 +41,8 @@
   <view class="recommend-box">
     <van-row gutter="20">
       <van-col span="12" wx:for="{{common_goods}}" wx:key="index">
-        <navigator url="/pages/content/content" class="best-item">
-          <image class="best-img" src="{{item.cover_img}}" mode="widthFix" />
+        <navigator url="/pages/content/content?d={{item.goods_id}}" class="best-item">
+          <image class="best-img" src="{{item.banner_img}}" mode="widthFix" />
           <view class="best-tit">{{item.goods_name}}</view>
           <view class="best-bt">
             <text class="z">¥{{item.goods_price}}</text>

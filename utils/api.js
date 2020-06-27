@@ -120,6 +120,13 @@ export function createOrder(params) {
   }, 1);
 }
 
+// 更新订单地址
+export function updateOrderAddress(params) {
+  return request('/?c=order&a=updateaddress&v=app&site=goods', params, {
+    prompt: false
+  }, 1);
+}
+
 // 个人中心
 export function getUserCenter(params) {
   return request('/?c=user&a=usercenter&v=app&site=user', params, {

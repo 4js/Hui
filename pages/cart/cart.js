@@ -1,4 +1,4 @@
-import { getCartList } from '../../utils/api'
+import { getCartList, deleteOneFromCart, createOrder } from '../../utils/api'
 import Toast from '@vant/weapp/toast/toast'
 import Dialog from '@vant/weapp/dialog/dialog'
 const app = getApp()
@@ -8,22 +8,34 @@ Page({
   // 页面的初始数据
   data: {
     checkedAll: false,
-    checkList: ['a', 'b'],
-    list: ['a', 'b', 'c'],
-    result: ['a', 'b']
+    checkList: [],
+    list: [],
+    total: 0
   },
 
   // 生命周期函数--监听页面加载
   onShow: function () {
+    this.getList()
+  },
+
+  getList(){
+    const _this = this
     const wx_openid = app.globalData.openid
     getCartList({ wx_openid }).then(resp => {
-      console.log(resp)
+      const cartList = resp.list.map(item => { return Object.assign(item, {cover_img: item.cover_img.split(',')[0]}) })
+      _this.setData({
+        list: cartList
+      })
     }).catch(err => Toast(err))
   },
 
   changeAll(e){
+    const { list } = this.data
     this.setData({
-      checkedAll: e.detail
+      checkedAll: e.detail,
+      checkList: e.detail ? list.map(item => item.shop_cart_id) : []
+    }, function(){
+      this.calcueTotal()
     })
   },
 
@@ -32,12 +44,14 @@ Page({
     this.setData({
       checkList: e.detail
     }, function(){
-      console.log(this.data.checkList)
+      this.calcueTotal()
     })
   },
 
   // 删除单个商品
   delete(event){
+    const wx_openid = app.globalData.openid
+    const { id: shop_cart_ids } = event.currentTarget.dataset
     const { position, instance } = event.detail;
     switch (position) {
       case 'left':
@@ -48,6 +62,10 @@ Page({
         Dialog.confirm({
           message: '确定删除吗？',
         }).then(() => {
+          deleteOneFromCart({wx_openid, shop_cart_ids}).then(res => {
+            Toast('删除成功')
+            this.getList()
+          }).catch(err => Toast(err))
           instance.close()
         }).catch(() => {
           instance.close()
@@ -56,12 +74,61 @@ Page({
     }
   },
 
+  // 去下单
+  goPurchase() {
+    Toast.loading({
+      mask: true,
+      message: '下单中...',
+    })
+    const wx_openid = app.globalData.openid
+    const { list, checkList } = this.data
+    // 处理商品数组
+    const goods_list = checkList
+      .map(id => list.find(item => item.shop_cart_id === id))
+      .map(goods => { return {goods_id: goods.goods_id, goods_count: goods.goods_count} })
+    createOrder({wx_openid, goods_list}).then(res => {
+      if (res && res.order_id) {
+        setTimeout(function(){
+          Toast.clear()
+          wx.navigateTo({
+            url: '/pages/confirm/confirm?d=' + res.order_id
+          })
+        }, 1000)
+      } else { Toast.clear()}
+    }).catch(err => {
+      Toast.clear()
+      Toast(err)
+    })
+  },
+
+  // 改变商品的数量
   onChangeNum(e){
-    console.log(e.detail)
+    const index = e.currentTarget.dataset.ind
+    const up = 'list[' + index + '].goods_count' 
+    this.setData({
+      [up]: e.detail
+    },function(){
+      this.calcueTotal()
+    })
   },
 
   noop(e){
     console.log(e)
+  },
+
+  // 计算总价
+  calcueTotal(){
+    const { list, checkList } = this.data
+    let totalMoney = 0
+    if (checkList.length) {
+      totalMoney = checkList
+        .map(id => list.find(item => item.shop_cart_id === id))
+        .map(goods => Number(goods.goods_price) * Number(goods.goods_count || 1))
+        .reduce((prev, cur) => prev + cur)
+    }
+    this.setData({
+      total: totalMoney * 100
+    })
   }
 
 })

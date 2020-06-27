@@ -1,9 +1,9 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/confirm/confirm",
     "pages/index/index",
     "pages/logist/logist",
-    "pages/confirm/confirm",
     "pages/detail/detail",
     "pages/order/order",
     "pages/content/content",
