@@ -44,7 +44,7 @@ Page({
       message: '下单中...',
     });
     const { goods_id, 'openid': wx_openid } = this.data
-    createOrder({wx_openid, goods_list: [{ 'goods_id': goods_id, 'goods_count': 1 }]}).then(res => {
+    createOrder({wx_openid, goods_list: JSON.stringify([{ 'goods_id': goods_id, 'goods_count': 1 }])}).then(res => {
       if (res && res.order_id) {
         setTimeout(function(){
           Toast.clear()

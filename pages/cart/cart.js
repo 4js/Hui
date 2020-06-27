@@ -86,7 +86,7 @@ Page({
     const goods_list = checkList
       .map(id => list.find(item => item.shop_cart_id === id))
       .map(goods => { return {goods_id: goods.goods_id, goods_count: goods.goods_count} })
-    createOrder({wx_openid, goods_list}).then(res => {
+    createOrder({wx_openid, goods_list: JSON.stringify(goods_list)}).then(res => {
       if (res && res.order_id) {
         setTimeout(function(){
           Toast.clear()

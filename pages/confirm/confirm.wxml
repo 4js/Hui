@@ -10,15 +10,16 @@
     </navigator>
   </view>
   <view class="goods">
-    <view class="goods-item">
+    <view class="goods-item" wx:for="{{orderInfo.order_goods}}" wx:for-item="goodItem" wx:key="index">
       <view class="goods-img">
-        <image src="../../assets/goods3.png" mode="widthFix"/>
+        <image src="{{goodItem.banner_img}}" mode="widthFix"/>
       </view>
       <view class="goods-tit">
-        <view class="title">爆款小米(MI)平衡车 Ninebot 号平衡车 4倍布行速度 智能电…</view>
-        <view class="desc">标准版白色</view>
+        <view class="title">{{goodItem.goods_name}}</view>
+        <view class="desc">{{goodItem.goods_describe}}</view>
         <view class="price">
-          <text class="l">¥1999.00</text>
+          <text class="l">¥{{goodItem.goods_price}}</text>
+          <text>X{{goodItem.goods_count}}</text>
         </view>
       </view>
     </view>

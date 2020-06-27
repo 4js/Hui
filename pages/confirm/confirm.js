@@ -74,7 +74,7 @@ Page({
             wx.redirectTo({
               url: '/pages/detail/detail?d=' + options.d
             })
-          }, 800)
+          }, 300)
         },
         fail (res) {
           Toast('支付失败')
