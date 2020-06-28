@@ -48,4 +48,5 @@
     <text class="gray">共 1 件，合计：</text><text class="red">¥{{orderInfo.total_pay_money}}</text>
     <van-button size="small" round type="primary" color="#FF3200" bindtap="pay">立即支付</van-button>
   </view>
+  <van-toast id="van-toast" />
 </view>

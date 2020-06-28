@@ -1,50 +1,59 @@
 <view class="container detail-container gray-bg">
-  <view class="status-box"><van-icon name="logistics" /><text>交易失败</text></view>
+  <view class="status-box" wx:if="{{orderInfo.order_status === '1'}}"><van-icon name="pending-payment" /><text>待付款</text></view>
+  <view class="status-box" wx:if="{{orderInfo.order_status === '2'}}"><van-icon name="send-gift-o" /><text>待发货</text></view>
+  <view class="status-box" wx:if="{{orderInfo.order_status === '4'}}"><van-icon name="logistics" /><text>待收货</text></view>
+  <view class="status-box" wx:if="{{orderInfo.order_status === '5'}}"><van-icon name="sign" /><text>已完成</text></view>
+  <view class="status-box" wx:if="{{orderInfo.order_status === '3'}}"><van-icon name="cash-back-record" /><text>已退款</text></view>
   <view class="address-box">
     <view class="location">
       <image src="../../assets/loc.png" mode="widthFix"/>
     </view>
     <view>
-      <view class="username"><text>王哈哈</text>13878923232</view>
-      <view class="info">广东省深圳市宝安区西乡镇云西路23号三花现代城20栋888</view>
+      <view class="username"><text>{{userName}}</text>{{userTel}}</view>
+      <view class="info">{{address}}</view>
     </view>
   </view>
   <view class="goods">
-    <view class="goods-item">
+    <view class="goods-item" wx:for="{{orderInfo.order_goods}}" wx:for-item="goodItem" wx:key="index">
       <view class="goods-img">
-        <image src="../../assets/goods3.png" mode="widthFix"/>
+        <image src="{{goodItem.banner_img}}" mode="widthFix"/>
       </view>
       <view class="goods-tit">
-        <view class="title">爆款小米(MI)平衡车 Ninebot 号平衡车 4倍布行速度 智能电…</view>
-        <view class="desc">标准版白色</view>
+        <view class="title">{{goodItem.goods_name}}</view>
+        <view class="desc">{{goodItem.goods_describe}}</view>
         <view class="price">
-          <text class="l">¥1999.00</text>
+          <text class="l">¥{{goodItem.goods_price}}</text>
+          <text>X{{goodItem.goods_count}}</text>
         </view>
       </view>
     </view>
     <view class="other-item">
       <text class="lef">商品总额</text>
-      <text class="rig">¥1999.00</text>
+      <text class="rig">¥{{orderInfo.total_goods_price}}</text>
     </view>
     <view class="other-item">
       <text class="lef">抵扣总额</text>
-      <text class="rig red">-¥20.00</text>
+      <text class="rig red">-¥{{orderInfo.total_coupon_price}}</text>
     </view>
     <view class="other-item">
       <text class="lef">运费</text>
-      <text class="rig">¥10.00</text>
+      <text class="rig">¥{{orderInfo.total_area_price}}</text>
     </view>
     <view class="other-item">
       <text class="lef">实付款</text>
-      <text class="rig red">¥1979.00</text>
+      <text class="rig red">¥{{orderInfo.total_pay_money}}</text>
     </view>
   </view>
   <view class="time-box">
-    <view>订单编号：8772357623872 <text>复制</text></view>
+    <view>订单编号：{{orderInfo.order_sn}} <text data-text="{{orderInfo.order_sn}}" bindtap='copyText'>复制</text></view>
     <view>下单时间：2020-06-20 13:22:30</view>
   </view>
   <view class="btn">
-    <van-button size="small" round type="default" class="lef">取消订单</van-button>
-    <van-button size="small" round type="primary" color="#FF3200">立即支付</van-button>
+    <van-button wx:if="{{orderInfo.order_status === '1'}}" size="small" round type="default" class="lef">取消订单</van-button>
+    <van-button wx:if="{{orderInfo.order_status === '5' || item.order_status === '3'}}" size="small" round type="default" class="lef">删除订单</van-button>
+    <van-button wx:if="{{orderInfo.order_status === '4'}}" size="small" round type="default" class="lef">查看物流</van-button>
+    <van-button wx:if="{{orderInfo.order_status === '4'}}" size="small" round type="primary" color="#FF3200">确认收货</van-button>
+    <van-button wx:if="{{orderInfo.order_status === '1'}}" size="small" round type="primary" color="#FF3200">立即支付</van-button>
   </view>
+  <van-toast id="van-toast" />
 </view>

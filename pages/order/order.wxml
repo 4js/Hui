@@ -1,4 +1,5 @@
 <view class="container gray-bg">
+  <wxs module="filter" src="../../utils/filter.wxs" />
   <van-tabs active="{{ active }}" class="tab-box" color="#467BFD" bind:change="onChange">
     <van-tab title="待付款" name="1"></van-tab>
     <van-tab title="待发货" name="2"></van-tab>
@@ -13,26 +14,35 @@
   <view class="order-box" wx:else>
     <view class="order-item" wx:for="{{list}}" wx:key="index">
       <view class="top">
-        <text class="left">2020.04.30 12:09</text>
-        <text class="right">待付款</text>
+        <text class="left">{{filter.getDate(item.create_time)}}</text>
+        <text class="right" wx:if="{{item.order_status === '1'}}">待付款</text>
+        <text class="right" wx:if="{{item.order_status === '2'}}">待发货</text>
+        <text class="right" wx:if="{{item.order_status === '4'}}">待收货</text>
+        <text class="right" wx:if="{{item.order_status === '5'}}">已完成</text>
+        <text class="right" wx:if="{{item.order_status === '3'}}">已退款</text>
       </view>
-      <view class="goods-item" wx:for="{{item.goods_info}}" wx:for-item="goodItem" wx:key="index">
-        <view class="goods-img">
-          <image src="../../assets/goods3.png" mode="widthFix"/>
-        </view>
-        <view class="goods-tit">
-          <view class="title">{{goodItem.goods_name}}</view>
-          <view class="desc">标准版白色</view>
-          <view class="price">
-            <text class="l">¥1999.00</text>
-            <text>X{{goodItem.goods_count}}</text>
+      <navigator url="/pages/detail/detail?d={{item.order_id}}">
+        <view class="goods-item" wx:for="{{item.goods_info}}" wx:for-item="goodItem" wx:key="index">
+          <view class="goods-img">
+            <image src="../../assets/goods3.png" mode="widthFix"/>
+          </view>
+          <view class="goods-tit">
+            <view class="title">{{goodItem.goods_name}}</view>
+            <view class="desc">标准版白色</view>
+            <view class="price">
+              <text class="l">¥1999.00</text>
+              <text>X{{goodItem.goods_count}}</text>
+            </view>
           </view>
         </view>
-      </view>
-      <view class="shi">实付款：<text>¥1999.00</text></view>
+      </navigator>
+      <view class="shi">实付款：<text>{{item.total_pay_money}}</text></view>
       <view class="btn-bottom">
-        <van-button size="small" round type="default" class="lef">取消订单</van-button>
-        <van-button size="small" round type="primary" color="#FF3200">立即支付</van-button>
+        <van-button size="small" round type="default" class="lef" wx:if="{{item.order_status === '1'}}">取消订单</van-button>
+        <van-button size="small" round type="default" class="lef" wx:if="{{item.order_status === '4'}}">查看物流</van-button>
+        <van-button size="small" round type="default" class="lef" wx:if="{{item.order_status === '5' || item.order_status === '3'}}">删除订单</van-button>
+        <van-button size="small" round type="primary" color="#FF3200" wx:if="{{item.order_status === '1'}}">立即支付</van-button>
+        <van-button size="small" round type="primary" color="#FF3200" wx:if="{{item.order_status === '4'}}">确认收货</van-button>
       </view>
     </view>
   </view>
