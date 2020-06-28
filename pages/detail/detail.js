@@ -21,8 +21,6 @@ Page({
     const { d: order_id } = getOptions()
     const wx_openid = app.globalData.openid
     getOneOrder({order_id, wx_openid}).then(res => {
-      console.log(res)
-      console.log(res)
       const addressArr = res.address.split(' ')
       _this.setData({
         orderInfo: res,
