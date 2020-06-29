@@ -4,14 +4,6 @@ import Toast from '@vant/weapp/toast/toast';
 import Dialog from '@vant/weapp/dialog/dialog';
 const app = getApp()
 
-// const status = {
-//   '1': 0,
-//   '2': 1,
-//   '3': 4,
-//   '4': 2,
-//   '5': 3
-// }
-
 Page({
 
   // 页面的初始数据
