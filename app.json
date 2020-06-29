@@ -10,7 +10,6 @@
     "pages/addDress/addDress",
     "pages/address/address",
     "pages/login/login",
-    "pages/log/log",
     "pages/mine/mine",
     "pages/cart/cart"
   ],

@@ -25,7 +25,6 @@ Page({
     let _this = this
     const wx_openid = app.globalData.openid
     getIndexGoods({ wx_openid }).then(res => {
-      console.log(res)
       const { common_goods, banner_goods, quality_goods } = res
       if (res) {
         _this.setData({

@@ -16,7 +16,7 @@
   <view class="order-box">
     <view class="tp">
       <text class="title">我的订单</text>
-      <navigator url="/pages/order/order?t=1" class="more">全部订单 ></navigator>
+      <navigator url="/pages/order/order?t=0" class="more">全部订单 ></navigator>
     </view>
     <view class="bt-box">
       <view class="order-item" data-t='1' bindtap="goOrderList">

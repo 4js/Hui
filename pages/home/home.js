@@ -17,21 +17,22 @@ Page({
     wx.getStorage({
       key: 'openid',
       success (res) {
+        // 授权过了的
         const openid = res.data
         _this.saveOpenid(openid)
         _this.checkHasBind(openid) // 检查是否绑定过
       },
       fail(){
-        console.log('失败')
+        // 说明还没授权过
         wx.login({
           success (res) {
             if (res.code) {
               //发起网络请求
               getOpenid({code: res.code}).then(resp => {
                 wx.setStorageSync('openid', resp.openid)
-                _this.saveOpenid(resp.openid)
-                _this.checkHasBind(resp.openid) // 检查是否绑定过=
-              })
+                _this.saveOpenid(resp.openid) // 讲openid保存到全局globalData里 后面的页面要用直接重里面取
+                _this.checkHasBind(resp.openid) // 检查是否绑定过
+              }).catch(err => Toast(err))
             } else {
               console.log('登录失败！' + res.errMsg)
             }

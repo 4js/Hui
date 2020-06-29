@@ -52,7 +52,7 @@ Page({
         userName: addressArr[4],
         userTel: addressArr[5]
       })
-    })
+    }).catch(err => Toast(err))
   },
 
   pay(){
@@ -80,7 +80,7 @@ Page({
           Toast('支付失败')
         }
       })
-    })
+    }).catch(err => Toast(err))
   },
 
   copyText: function (e) {

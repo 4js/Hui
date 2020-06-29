@@ -1,8 +1,11 @@
 <view class="container detail-container gray-bg">
+  <view class="status-box" wx:if="{{orderInfo.order_status === '-1'}}"><van-icon name="close" /><text>已取消</text></view>
+  <view class="status-box" wx:if="{{orderInfo.order_status === '-2'}}"><van-icon name="warning-o" /><text>已删除</text></view>
+  <view class="status-box" wx:if="{{orderInfo.order_status === '-3'}}"><van-icon name="underway-o" /><text>退款中</text></view>
   <view class="status-box" wx:if="{{orderInfo.order_status === '1'}}"><van-icon name="pending-payment" /><text>待付款</text></view>
   <view class="status-box" wx:if="{{orderInfo.order_status === '2'}}"><van-icon name="send-gift-o" /><text>待发货</text></view>
   <view class="status-box" wx:if="{{orderInfo.order_status === '4'}}"><van-icon name="logistics" /><text>待收货</text></view>
-  <view class="status-box" wx:if="{{orderInfo.order_status === '5'}}"><van-icon name="sign" /><text>已完成</text></view>
+  <view class="status-box" wx:if="{{orderInfo.order_status === '5'}}"><van-icon name="sign" /><text>交易成功</text></view>
   <view class="status-box" wx:if="{{orderInfo.order_status === '3'}}"><van-icon name="cash-back-record" /><text>已退款</text></view>
   <view class="address-box">
     <view class="location">
@@ -48,12 +51,14 @@
     <view>订单编号：{{orderInfo.order_sn}} <text data-text="{{orderInfo.order_sn}}" bindtap='copyText'>复制</text></view>
     <view>下单时间：2020-06-20 13:22:30</view>
   </view>
-  <view class="btn">
-    <van-button wx:if="{{orderInfo.order_status === '1'}}" size="small" round type="default" class="lef">取消订单</van-button>
-    <van-button wx:if="{{orderInfo.order_status === '5' || item.order_status === '3'}}" size="small" round type="default" class="lef">删除订单</van-button>
+  <view class="btn" wx:if="{{orderInfo.order_status === '1' || orderInfo.order_status === '3' || orderInfo.order_status === '4' || orderInfo.order_status === '5' || orderInfo.order_status === '-1'}}">
+    <van-button wx:if="{{orderInfo.order_status === '1'}}" size="small" round type="default" class="lef" bindtap="cancelOrder">取消订单</van-button>
+    <van-button wx:if="{{orderInfo.order_status === '5' || orderInfo.order_status === '3' || orderInfo.order_status === '-1'}}" size="small" round type="default" class="lef" bindtap="deleteOrder">删除订单</van-button>
     <van-button wx:if="{{orderInfo.order_status === '4'}}" size="small" round type="default" class="lef">查看物流</van-button>
-    <van-button wx:if="{{orderInfo.order_status === '4'}}" size="small" round type="primary" color="#FF3200">确认收货</van-button>
-    <van-button wx:if="{{orderInfo.order_status === '1'}}" size="small" round type="primary" color="#FF3200">立即支付</van-button>
+    <van-button wx:if="{{orderInfo.order_status === '4'}}" size="small" round type="primary" color="#FF3200" bindtap="confirmOrder">确认收货</van-button>
+    <van-button wx:if="{{orderInfo.order_status === '1'}}" size="small" round type="primary" color="#FF3200" bindtap="pay">立即支付</van-button>
   </view>
+  <!-- 提示 -->
+  <van-dialog id="van-dialog" />
   <van-toast id="van-toast" />
 </view>

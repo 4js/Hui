@@ -113,6 +113,13 @@ export function getOneOrder(params) {
   }, 1);
 }
 
+// 修改订单状态
+export function changeOrderStatus(params) {
+  return request('/?c=order&a=updateorderstatus&v=app&site=goods', params, {
+    prompt: false
+  }, 1);
+}
+
 // 立即购买
 export function createOrder(params) {
   return request('/?c=order&a=createorder&v=app&site=goods', params, {

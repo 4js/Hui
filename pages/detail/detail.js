@@ -1,7 +1,9 @@
 import { getOptions } from '../../utils/util'
-import { getOneOrder, addGoodsCart, createOrder } from '../../utils/api'
+import { getOneOrder, openPay, changeOrderStatus } from '../../utils/api'
 import Toast from '@vant/weapp/toast/toast';
+import Dialog from '@vant/weapp/dialog/dialog';
 const app = getApp()
+
 Page({
 
   // 页面的初始数据
@@ -45,6 +47,96 @@ Page({
         })
       }
     })
+  },
+
+  // 取消订单
+  cancelOrder(){
+    const { d: order_id } = getOptions()
+    const { getList } = this
+    Dialog.confirm({
+      message: '确定取消订单？',
+      confirmButtonText: '确定',
+      cancelButtonText: '取消'
+    })
+      .then(() => {
+        // on confirm
+        changeOrderStatus({ order_id, order_status: -1 }).then(res => {
+          getList()
+          Toast('取消成功')
+        }).catch(err => Toast(err))
+      })
+      .catch(() => {
+        // on cancel
+      });
+  },
+
+  // 立即支付
+  pay(){
+    const { getList } = this
+    const { d: order_id } = getOptions()
+    const wx_openid = app.globalData.openid
+    openPay({
+      order_id,
+      wx_openid
+    }).then(response => {
+      // 唤醒微信支付
+      wx.requestPayment({
+        timeStamp: response.timeStamp,
+        nonceStr: response.nonceStr,
+        package: response.package,
+        signType: response.signType,
+        paySign: response.paySign,
+        success (res) { 
+          Toast('支付成功')
+          getList()
+        },
+        fail (res) {
+          Toast('支付失败')
+        }
+      })
+    }).catch(err => Toast(err))
+  },
+
+  // 删除订单
+  deleteOrder(){
+    const { d: order_id } = getOptions()
+    const { getList } = this
+    Dialog.confirm({
+      message: '确定删除订单？',
+      confirmButtonText: '确定',
+      cancelButtonText: '取消'
+    })
+      .then(() => {
+        // on confirm
+        changeOrderStatus({ order_id, order_status: -2 }).then(res => {
+          getList()
+          Toast('删除成功')
+        }).catch(err => Toast(err))
+      })
+      .catch(() => {
+        // on cancel
+      });
+  },
+
+  // 确认收货
+  confirmOrder(){
+    const { d: order_id } = getOptions()
+    const { getList } = this
+    Dialog.confirm({
+      message: '确定已收货？',
+      confirmButtonText: '确定',
+      cancelButtonText: '取消'
+    })
+      .then(() => {
+        // on confirm
+        changeOrderStatus({ order_id, order_status: 3 }).then(res => {
+          getList()
+          Toast('收货成功')
+        }).catch(err => Toast(err))
+      })
+      .catch(() => {
+        // on cancel
+      });
   }
   
 })
