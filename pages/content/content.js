@@ -10,7 +10,8 @@ Page({
     goods_id: '',
     goodInfo: {},
     cover_img: [],
-    detail_img: []
+    detail_img: [],
+    number: 1
   },
 
   // 生命周期函数--监听页面加载
@@ -38,13 +39,20 @@ Page({
     }).catch(err => Toast(err))
   },
 
+  // 改变商品的数量
+  onChangeNum(e){
+    this.setData({
+      number: e.detail
+    })
+  },
+
   goPurchase() {
     Toast.loading({
       mask: true,
       message: '下单中...',
     });
-    const { goods_id, 'openid': wx_openid } = this.data
-    createOrder({wx_openid, goods_list: JSON.stringify([{ 'goods_id': goods_id, 'goods_count': 1 }])}).then(res => {
+    const { goods_id, number, 'openid': wx_openid } = this.data
+    createOrder({wx_openid, goods_list: JSON.stringify([{ 'goods_id': goods_id, 'goods_count': number }])}).then(res => {
       if (res && res.order_id) {
         setTimeout(function(){
           Toast.clear()

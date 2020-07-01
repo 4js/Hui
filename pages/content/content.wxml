@@ -15,6 +15,10 @@
       </view>
       <view class="title">{{goodInfo.goods_name}}</view>
       <view class="desc">{{goodInfo.model}}</view>
+      <view class="number-box">
+        <text>购买数量</text>
+        <van-stepper value="{{ number }}" bind:change="onChangeNum" />
+      </view>
     </view>
     <view class="desc-tit"><text />商品详情</view>
     <view class="info">

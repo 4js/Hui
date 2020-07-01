@@ -1,8 +1,12 @@
 <view class="container logist-container gray-bg">
   <view class="top-box">
-    <view>物流状态: <text>已签收</text></view>
-    <view>快递公司: <text>圆通快递</text></view>
-    <view>快递单号: 1234432876232323<text class="fu">复制</text></view>
+    <!-- <view>物流状态: <text>已签收</text></view> -->
+    <view>快递公司: 
+      <text wx:if="{{shipper==='ST'}}">申通快递</text>
+      <text wx:if="{{shipper==='YT'}}">圆通快递</text>
+      <text wx:if="{{shipper==='ZT'}}">中通快递</text>
+    </view>
+    <view>快递单号: {{code}}<text class="fu">复制</text></view>
   </view>
   <view class="logist-box">
     <van-steps

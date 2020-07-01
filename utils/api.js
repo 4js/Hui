@@ -140,3 +140,10 @@ export function getUserCenter(params) {
     prompt: false
   }, 1);
 }
+
+// 物流查询接口
+export function getLogistic(params) {
+  return request('/?c=order&a=querywaybill&v=app&site=goods', params, {
+    prompt: false
+  }, 1);
+}

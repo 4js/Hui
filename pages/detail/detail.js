@@ -137,6 +137,14 @@ Page({
       .catch(() => {
         // on cancel
       });
+  },
+
+  // 查看物流
+  viewLogis(e){
+    const { d } = getOptions()
+    wx.navigateTo({
+      url: '/pages/logist/logist?d' + d
+    })
   }
   
 })

@@ -54,7 +54,7 @@
   <view class="btn" wx:if="{{orderInfo.order_status === '1' || orderInfo.order_status === '3' || orderInfo.order_status === '4' || orderInfo.order_status === '5' || orderInfo.order_status === '-1'}}">
     <van-button wx:if="{{orderInfo.order_status === '1'}}" size="small" round type="default" class="lef" bindtap="cancelOrder">取消订单</van-button>
     <van-button wx:if="{{orderInfo.order_status === '5' || orderInfo.order_status === '3' || orderInfo.order_status === '-1'}}" size="small" round type="default" class="lef" bindtap="deleteOrder">删除订单</van-button>
-    <van-button wx:if="{{orderInfo.order_status === '4'}}" size="small" round type="default" class="lef">查看物流</van-button>
+    <van-button wx:if="{{orderInfo.order_status === '4'}}" size="small" round type="default" class="lef" bindtap="viewLogis">查看物流</van-button>
     <van-button wx:if="{{orderInfo.order_status === '4'}}" size="small" round type="primary" color="#FF3200" bindtap="confirmOrder">确认收货</van-button>
     <van-button wx:if="{{orderInfo.order_status === '1'}}" size="small" round type="primary" color="#FF3200" bindtap="pay">立即支付</van-button>
   </view>
