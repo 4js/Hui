@@ -18,6 +18,12 @@ Page({
     this.getList()
   },
 
+  // 下拉刷新
+  onPullDownRefresh: function() {
+    this.getList()
+  },
+
+  // 初始化数据
   getList(){
     const _this = this
     const wx_openid = app.globalData.openid
@@ -27,6 +33,7 @@ Page({
         list: cartList
       })
     }).catch(err => Toast(err))
+    wx.stopPullDownRefresh()
   },
 
   changeAll(e){
@@ -76,12 +83,18 @@ Page({
 
   // 去下单
   goPurchase() {
+    const { list, checkList } = this.data
+    const wx_openid = app.globalData.openid
+
+    if (checkList.length===0) {
+      Toast('请选择要购买的商品')
+      return false
+    }
+
     Toast.loading({
       mask: true,
       message: '下单中...',
     })
-    const wx_openid = app.globalData.openid
-    const { list, checkList } = this.data
     // 处理商品数组
     const goods_list = checkList
       .map(id => list.find(item => item.shop_cart_id === id))

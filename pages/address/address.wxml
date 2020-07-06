@@ -4,7 +4,7 @@
     <image src="../../assets/no-data.png" class="no-img" mode="widthFix"/>
     <view class="tips">还没有地址奥，快去添加吧~</view>
   </view>
-  <view wx:else>
+  <view wx:else class="main-box">
     <van-swipe-cell right-width="{{ 65 }}" wx:for="{{list}}" wx:key="index" async-close bind:close="delete" data-id="{{item.address_id}}">
       <van-cell-group>
         <view class="item">
@@ -20,7 +20,7 @@
       <view class="delete" slot="right">删除</view>
     </van-swipe-cell>
   </view>
-  <view>
+  <view class="btn-bottom">
     <van-button round block type="info" color="#467BFD" class="btn-add" bindtap="toAdd">+ 新增收货地址</van-button>
   </view>
   <van-dialog id="van-dialog" />

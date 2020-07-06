@@ -51,8 +51,23 @@
 }
 
 .order-item{
+    position: relative;
     width: 130rpx;
     height: 136rpx;
+}
+.order-item .unread {
+  position: absolute;
+  top: -10rpx;
+  right: 20%;
+  width: 36rpx;
+  height: 36rpx;
+  text-align: center;
+  line-height: 34rpx;
+  background-color: #e73833;
+  border-radius: 36rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #fff;
 }
 .button-item{
   margin: 0;

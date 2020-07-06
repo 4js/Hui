@@ -13,6 +13,11 @@ Page({
     this.getList()
   },
 
+  // 下拉刷新
+  onPullDownRefresh: function() {
+    this.getList()
+  },
+
   toAdd(){
     wx.removeStorageSync('address') // 新增的时候要清除存储在本地的地址数据 
     wx.navigateTo({
@@ -28,6 +33,7 @@ Page({
         list: res
       })
     })
+    wx.stopPullDownRefresh()
   },
 
   // 选择地址编辑

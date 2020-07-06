@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "商品详情",
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "van-toast": "@vant/weapp/toast/index",
     "van-stepper": "@vant/weapp/stepper/index",

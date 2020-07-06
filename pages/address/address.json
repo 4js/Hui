@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "收货地址",
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "van-button": "@vant/weapp/button/index",
     "van-popup": "@vant/weapp/popup/index",

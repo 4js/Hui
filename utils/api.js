@@ -147,3 +147,10 @@ export function getLogistic(params) {
     prompt: false
   }, 1);
 }
+
+// 订单数量
+export function getOrderNumber(params) {
+  return request('/?c=order&a=orderstatusnum&v=app&site=goods', params, {
+    prompt: false
+  }, 1);
+}

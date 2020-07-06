@@ -7,7 +7,7 @@
     </view>
     <view class="title">
       <navigator url="/pages/login/login" class="username">{{userInfo.wx_name}}</navigator>
-      <text class="desc">抵扣余额 ¥{{userInfo.coupon_money}} | 7天后到期</text>
+      <view class="desc">抵扣余额 ¥{{userInfo.coupon_money}} <text wx:if="{{userInfo.is_expire==='1'}}">| {{userInfo.expire_time}}天后到期</text></view>
     </view>
   </view>
   <!-- 头像 end -->
@@ -22,22 +22,27 @@
       <view class="order-item" data-t='1' bindtap="goOrderList">
         <view class="order-icon"><van-icon name="pending-payment" /></view>
         <view class="order-text">待付款</view>
+        <view class="unread" wx:if="{{wait_pay_num>0}}">{{wait_pay_num}}</view>
       </view>
       <view class="order-item" data-t='2' bindtap="goOrderList">
         <view class="order-icon"><van-icon name="send-gift-o" /></view>
         <view class="order-text">待发货</view>
+        <view class="unread" wx:if="{{complete_pay_num>0}}">{{complete_pay_num}}</view>
       </view>
       <view class="order-item" data-t='4' bindtap="goOrderList">
         <view class="order-icon"><van-icon name="logistics" /></view>
         <view class="order-text">待收货</view>
+        <view class="unread" wx:if="{{send_goods_num>0}}">{{send_goods_num}}</view>
       </view>
       <view class="order-item" data-t='5' bindtap="goOrderList">
         <view class="order-icon"><van-icon name="sign" /></view>
         <view class="order-text">已完成</view>
+        <view class="unread" wx:if="{{complete_goods_num>0}}">{{complete_goods_num}}</view>
       </view>
       <view class="order-item" data-t='3' bindtap="goOrderList">
         <view class="order-icon"><van-icon name="cash-back-record" /></view>
         <view class="order-text">已退款</view>
+        <view class="unread" wx:if="{{complete_refund_num>0}}">{{complete_refund_num}}</view>
       </view>
     </view>
   </view>
@@ -55,7 +60,7 @@
       </button>
       <navigator url="/pages/address/address" class="order-item">
         <view class="order-icon"><van-icon name="location-o" /></view>
-        <view class="order-text">收获地址</view>
+        <view class="order-text">收货地址</view>
       </navigator>
     </view>
     <!-- 服务 end -->

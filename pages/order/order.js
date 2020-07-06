@@ -20,6 +20,12 @@ Page({
     this.getList(t)
   },
 
+  // 下拉刷新
+  onPullDownRefresh: function() {
+    const { active } = this.data
+    this.getList(active)
+  },
+  
   // 获取列表
   getList(status){
     const _this = this
@@ -33,6 +39,7 @@ Page({
         list: res ? res : []
       })
     }).catch(err => Toast(err))
+    wx.stopPullDownRefresh()
   },
 
   onChange(e){

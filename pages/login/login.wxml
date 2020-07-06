@@ -6,7 +6,7 @@
   <view class="form">
     <van-field
       value="{{ phone }}"
-      placeholder="请输入用户名"
+      placeholder="请输入邀请码"
       border="{{ false }}"
       data-k="phone"
       bind:change="onChange"

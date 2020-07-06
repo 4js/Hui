@@ -22,6 +22,11 @@ Page({
 
   // 生命周期函数
   onShow(){
+    this.getData()
+  },
+
+  // 初始化数据
+  getData(){
     let _this = this
     const wx_openid = app.globalData.openid
     getIndexGoods({ wx_openid }).then(res => {
@@ -33,7 +38,13 @@ Page({
           common_goods
         })
       }
-    })
+    }).catch(err => Toast(err))
+    wx.stopPullDownRefresh()
+  },
+
+  // 下拉刷新
+  onPullDownRefresh: function() {
+    this.getData()
   },
 
   // 页面滚动事件

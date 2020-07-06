@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "惠汇精选",
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "van-dropdown-menu": "@vant/weapp/dropdown-menu/index",
     "van-button": "@vant/weapp/button/index",

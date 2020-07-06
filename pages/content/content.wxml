@@ -27,7 +27,7 @@
   </view>
   <van-goods-action>
     <van-goods-action-icon icon="chat-o" open-type="contact" text="客服" />
-    <van-goods-action-icon icon="cart-o" text="购物车" />
+    <van-goods-action-icon icon="cart-o" text="购物车" bindtap="goCart"/>
     <van-goods-action-button
       text="加入购物车"
       type="warning"
