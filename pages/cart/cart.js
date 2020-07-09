@@ -8,7 +8,7 @@ Page({
   // 页面的初始数据
   data: {
     checkedAll: false,
-    checkList: [],
+    checkList: '',
     list: [],
     total: 0
   },
@@ -36,15 +36,15 @@ Page({
     wx.stopPullDownRefresh()
   },
 
-  changeAll(e){
-    const { list } = this.data
-    this.setData({
-      checkedAll: e.detail,
-      checkList: e.detail ? list.map(item => item.shop_cart_id) : []
-    }, function(){
-      this.calcueTotal()
-    })
-  },
+  // changeAll(e){
+  //   const { list } = this.data
+  //   this.setData({
+  //     checkedAll: e.detail,
+  //     checkList: e.detail ? list.map(item => item.shop_cart_id) : []
+  //   }, function(){
+  //     this.calcueTotal()
+  //   })
+  // },
 
   // 选择单个商品
   singleChange(e){
@@ -96,22 +96,23 @@ Page({
       message: '下单中...',
     })
     // 处理商品数组
-    const goods_list = checkList
-      .map(id => list.find(item => item.shop_cart_id === id))
-      .map(goods => { return {goods_id: goods.goods_id, goods_count: goods.goods_count} })
-    createOrder({wx_openid, goods_list: JSON.stringify(goods_list)}).then(res => {
-      if (res && res.order_id) {
-        setTimeout(function(){
-          Toast.clear()
-          wx.navigateTo({
-            url: '/pages/confirm/confirm?d=' + res.order_id
-          })
-        }, 1000)
-      } else { Toast.clear()}
-    }).catch(err => {
-      Toast.clear()
-      Toast(err)
-    })
+    console.log(checkList)
+    // const goods_list = checkList
+    //   .map(id => list.find(item => item.shop_cart_id === id))
+    //   .map(goods => { return {goods_id: goods.goods_id, goods_count: goods.goods_count} })
+    // createOrder({wx_openid, goods_list: JSON.stringify(goods_list)}).then(res => {
+    //   if (res && res.order_id) {
+    //     setTimeout(function(){
+    //       Toast.clear()
+    //       wx.navigateTo({
+    //         url: '/pages/confirm/confirm?d=' + res.order_id
+    //       })
+    //     }, 1000)
+    //   } else { Toast.clear()}
+    // }).catch(err => {
+    //   Toast.clear()
+    //   Toast(err)
+    // })
   },
 
   // 改变商品的数量
@@ -134,10 +135,12 @@ Page({
     const { list, checkList } = this.data
     let totalMoney = 0
     if (checkList.length) {
-      totalMoney = checkList
-        .map(id => list.find(item => item.shop_cart_id === id))
-        .map(goods => Number(goods.goods_price) * Number(goods.goods_count || 1))
-        .reduce((prev, cur) => prev + cur)
+      // totalMoney = checkList
+      //   .map(id => list.find(item => item.shop_cart_id === id))
+      //   .map(goods => Number(goods.goods_price) * Number(goods.goods_count || 1))
+      //   .reduce((prev, cur) => prev + cur)
+      console.log(list.filter(item => item.shop_cart_id === checkList))
+      totalMoney = list.filter(item => item.shop_cart_id === checkList).map(goods => Number(goods.goods_price) * Number(goods.goods_count || 1))[0]
     }
     this.setData({
       total: totalMoney * 100

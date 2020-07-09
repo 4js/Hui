@@ -14,7 +14,8 @@
         <view class="purchase">2314人付款</view>
       </view>
       <view class="title">{{goodInfo.goods_name}}</view>
-      <view class="desc">{{goodInfo.model}}</view>
+      <view class="desc">型号：{{goodInfo.model}} 规格：{{goodInfo.specification}}</view>
+      <view class="desc">{{goodInfo.goods_describe}}</view>
       <view class="number-box">
         <text>购买数量</text>
         <van-stepper value="{{ number }}" bind:change="onChangeNum" />

@@ -11,7 +11,8 @@ Page({
     orderInfo: {},
     address: '',
     userName: '',
-    userTel: ''
+    userTel: '',
+    payLoading: false
   },
 
   onShow(){
@@ -72,6 +73,14 @@ Page({
 
   // 立即支付
   pay(){
+    // 添加loading效果
+    if (this.data.payLoading) {
+      return false
+    }
+    this.setData({
+      payLoading: true
+    })
+    const _this = this
     const { getList } = this
     const { d: order_id } = getOptions()
     const wx_openid = app.globalData.openid
@@ -89,12 +98,29 @@ Page({
         success (res) { 
           Toast('支付成功')
           getList()
+          setTimeout(function(){
+            _this.setData({
+              payLoading: false
+            })
+          }, 1500)
         },
         fail (res) {
           Toast('支付失败')
+          setTimeout(function(){
+            _this.setData({
+              payLoading: false
+            })
+          }, 1500)
         }
       })
-    }).catch(err => Toast(err))
+    }).catch(err => {
+      Toast(err)
+      setTimeout(function(){
+        _this.setData({
+          payLoading: false
+        })
+      }, 1500)
+    })
   },
 
   // 删除订单
@@ -109,7 +135,7 @@ Page({
       .then(() => {
         // on confirm
         changeOrderStatus({ order_id, order_status: -2 }).then(res => {
-          getList()
+          wx.navigateBack()
           Toast('删除成功')
         }).catch(err => Toast(err))
       })

@@ -9,7 +9,8 @@ Page({
   // 页面的初始数据
   data: {
     active: 0,
-    list: []
+    list: [],
+    payLoading: false
   },
 
   onShow(){
@@ -73,6 +74,14 @@ Page({
 
   // 立即支付
   pay(e){
+    // 添加loading效果
+    if (this.data.payLoading) {
+      return false
+    }
+    this.setData({
+      payLoading: true
+    })
+    const _this = this
     const { data: { active }, getList } = this
     const order_id = e.currentTarget.dataset.d
     const wx_openid = app.globalData.openid
@@ -89,12 +98,29 @@ Page({
         success (res) { 
           Toast('支付成功')
           getList(active)
+          setTimeout(function(){
+            _this.setData({
+              payLoading: false
+            })
+          }, 1500)
         },
         fail (res) {
           Toast('支付失败')
+          setTimeout(function(){
+            _this.setData({
+              payLoading: false
+            })
+          }, 1500)
         }
       })
-    }).catch(err => Toast(err))
+    }).catch(err => {
+      Toast(err)
+      setTimeout(function(){
+        _this.setData({
+          payLoading: false
+        })
+      }, 1500)
+    })
   },
 
   deleteOrder(e){
