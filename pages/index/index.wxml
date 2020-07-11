@@ -27,7 +27,7 @@
           <text class="z">¥{{item.goods_price}}</text>
           <text class="y">¥{{item.goods_original_price}}</text>
         </view>
-        <view class="purchase">{{item.goods_sn}}人购买</view>
+        <view class="purchase">{{item.fake_buy_num}}人购买</view>
       </view>
     </navigator>
   </view>
