@@ -19,7 +19,7 @@
   <view class="goods">
     <view class="goods-item" wx:for="{{orderInfo.order_goods}}" wx:for-item="goodItem" wx:key="index">
       <view class="goods-img">
-        <image src="{{goodItem.banner_img}}" mode="widthFix"/>
+        <image src="{{goodItem.cover_img}}" mode="widthFix"/>
       </view>
       <view class="goods-tit">
         <view class="title">{{goodItem.goods_name}}</view>

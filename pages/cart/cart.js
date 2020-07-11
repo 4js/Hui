@@ -1,4 +1,4 @@
-import { getCartList, deleteOneFromCart, createOrder } from '../../utils/api'
+import { getCartList, deleteOneFromCart, addGoodsCart } from '../../utils/api'
 import Toast from '@vant/weapp/toast/toast'
 import Dialog from '@vant/weapp/dialog/dialog'
 const app = getApp()
@@ -31,6 +31,8 @@ Page({
       const cartList = resp.list.map(item => { return Object.assign(item, {cover_img: item.cover_img.split(',')[0]}) })
       _this.setData({
         list: cartList
+      }, () => {
+        _this.calcueTotal()
       })
     }).catch(err => Toast(err))
     wx.stopPullDownRefresh()
@@ -117,13 +119,19 @@ Page({
 
   // 改变商品的数量
   onChangeNum(e){
+    const _this = this
+    const wx_openid = app.globalData.openid
     const index = e.currentTarget.dataset.ind
+    const goodsID = e.currentTarget.dataset.gd
     const up = 'list[' + index + '].goods_count' 
-    this.setData({
-      [up]: e.detail
-    },function(){
-      this.calcueTotal()
+    addGoodsCart({ wx_openid, goods_id: goodsID, goods_count: e.detail }).then(res => {
+      _this.getList()
     })
+    // this.setData({
+    //   [up]: e.detail
+    // },function(){
+    //   this.calcueTotal()
+    // })
   },
 
   noop(e){

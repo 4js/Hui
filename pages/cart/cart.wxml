@@ -27,7 +27,7 @@
             <view class="desc">{{item.goods_name}}</view>
             <view class="price">
               <text class="l">¥{{item.goods_price}}</text>
-              <van-stepper button-size="20px" value="{{ item.goods_count }}" bind:change="onChangeNum" data-ind="{{index}}"/>
+              <van-stepper button-size="20px" value="{{ item.goods_count }}" bind:change="onChangeNum" data-ind="{{index}}" data-gd="{{item.goods_id}}"/>
             </view>
           </view>
         </view>

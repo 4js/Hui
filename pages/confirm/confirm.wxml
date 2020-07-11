@@ -12,7 +12,7 @@
   <view class="goods">
     <view class="goods-item" wx:for="{{orderInfo.order_goods}}" wx:for-item="goodItem" wx:key="index">
       <view class="goods-img">
-        <image src="{{goodItem.banner_img}}" mode="widthFix"/>
+        <image src="{{goodItem.cover_img}}" mode="widthFix"/>
       </view>
       <view class="goods-tit">
         <view class="title">{{goodItem.goods_name}}</view>
@@ -45,7 +45,7 @@
     <view>下单时间：2020-06-20 13:22:30</view>
   </view>
   <view class="btn">
-    <text class="gray">共 1 件，合计：</text><text class="red">¥{{orderInfo.total_pay_money}}</text>
+    <text class="gray">共 {{orderInfo.order_goods[0].goods_count}} 件，合计：</text><text class="red">¥{{orderInfo.total_pay_money}}</text>
     <van-button size="small" round type="primary" color="#FF3200" bindtap="pay">立即支付</van-button>
   </view>
   <van-toast id="van-toast" />

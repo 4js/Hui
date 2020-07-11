@@ -42,7 +42,7 @@
     <van-row gutter="20">
       <van-col span="12" wx:for="{{common_goods}}" wx:key="index">
         <navigator url="/pages/content/content?d={{item.goods_id}}" class="best-item">
-          <image class="best-img" src="{{item.banner_img}}" mode="widthFix" />
+          <image class="best-img" src="{{item.cover_img}}" mode="widthFix" />
           <view class="best-tit">{{item.goods_name}}</view>
           <view class="best-bt">
             <text class="z">¥{{item.goods_price}}</text>

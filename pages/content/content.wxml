@@ -11,14 +11,14 @@
     <view class="goods-info">
       <view class="top">
         <view class="price">¥{{goodInfo.goods_price}}<text>{{goodInfo.goods_original_price}}</text></view>
-        <view class="purchase">2314人付款</view>
+        <view class="purchase">{{goodInfo.fake_buy_num}}人付款</view>
       </view>
       <view class="title">{{goodInfo.goods_name}}</view>
       <view class="desc">型号：{{goodInfo.model}} 规格：{{goodInfo.specification}}</view>
       <view class="desc">{{goodInfo.goods_describe}}</view>
       <view class="number-box">
         <text>购买数量</text>
-        <van-stepper value="{{ number }}" bind:change="onChangeNum" />
+        <van-stepper value="{{ number }}" max="{{goodInfo.repertory_num}}" bind:change="onChangeNum" />
       </view>
     </view>
     <view class="desc-tit"><text />商品详情</view>

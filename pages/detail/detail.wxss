@@ -8,6 +8,7 @@
   padding-left: 14rpx;
 }
 .detail-container .address-box {
+  height: 148rpx;
   display: flex;
   align-items: center;
   padding: 30rpx;

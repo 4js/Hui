@@ -158,7 +158,7 @@ Page({
     const addressObj = {
       true_name: username,
       address_tel: phone,
-      datail_address: address,
+      detail_address: address,
       address_default: isDefault ? 2 : 1,
       wx_openid,
       province_id,

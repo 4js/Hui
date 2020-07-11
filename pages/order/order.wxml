@@ -28,7 +28,7 @@
       <navigator url="/pages/detail/detail?d={{item.order_id}}">
         <view class="goods-item" wx:for="{{item.goods_info}}" wx:for-item="goodItem" wx:key="index">
           <view class="goods-img">
-            <image src="../../assets/goods3.png" mode="widthFix"/>
+            <image src="{{goodItem.cover_img}}" mode="widthFix"/>
           </view>
           <view class="goods-tit">
             <view class="title">{{goodItem.goods_name}}</view>
