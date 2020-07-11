@@ -10,7 +10,7 @@
         <view class="item">
           <view class="left" data-id="{{item.address_id}}" bindtap="selectAddress">
             <view class="user"><text>{{item.true_name}}</text>{{item.address_tel}} <van-tag wx:if="{{item.address_default === '2'}}" plain type="danger">默认</van-tag></view>
-            <view class="info">{{item.province_name}}{{item.city_name}}{{item.county_name}}{{item.datail_address}}</view>
+            <view class="info">{{item.province_name}}{{item.city_name}}{{item.county_name}}{{item.detail_address}}</view>
           </view>
           <view class="right" bindtap="edit" data-id="{{item.address_id}}">
             <van-icon name="edit" />

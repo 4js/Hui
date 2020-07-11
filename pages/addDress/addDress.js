@@ -40,7 +40,7 @@ Page({
           province_id,
           city_id,
           county_id,
-          datail_address,
+          detail_address,
           address_default
         } = address
         _this.setData({
@@ -51,7 +51,7 @@ Page({
           province_id: province_id,
           city_id: city_id,
           county_id: county_id,
-          address: datail_address,
+          address: detail_address,
           isDefault: address_default === '2' ? true : false,
         })
         console.log(res.data)
