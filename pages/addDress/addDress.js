@@ -24,7 +24,6 @@ Page({
 
   // 生命周期函数--监听页面显示
   onShow: function () {
-    console.log(area)
     const _this = this
     wx.getStorage({
       key: 'address',
@@ -54,10 +53,8 @@ Page({
           address: detail_address,
           isDefault: address_default === '2' ? true : false,
         })
-        console.log(res.data)
       },
       fail(){
-        console.log('编辑')
         _this.setData({
           address_id: '',
           username: '',

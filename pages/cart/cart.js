@@ -135,10 +135,6 @@ Page({
     // })
   },
 
-  noop(e){
-    console.log(e)
-  },
-
   // 计算总价
   calcueTotal(){
     const { list, checkList } = this.data
@@ -148,7 +144,6 @@ Page({
       //   .map(id => list.find(item => item.shop_cart_id === id))
       //   .map(goods => Number(goods.goods_price) * Number(goods.goods_count || 1))
       //   .reduce((prev, cur) => prev + cur)
-      console.log(list.filter(item => item.shop_cart_id === checkList))
       totalMoney = list.filter(item => item.shop_cart_id === checkList).map(goods => Number(goods.goods_price) * Number(goods.goods_count || 1))[0]
     }
     this.setData({

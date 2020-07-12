@@ -44,7 +44,6 @@ Page({
   addCart(){
     const { goods_id, number: goods_count, 'openid': wx_openid } = this.data
     addGoodsCart({goods_id, wx_openid, goods_count}).then(res => {
-      console.log(res)
       Toast('添加成功')
     }).catch(err => Toast(err))
   },

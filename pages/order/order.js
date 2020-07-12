@@ -14,7 +14,8 @@ Page({
   },
 
   onShow(){
-    const { t } = getOptions()
+    // const { t } = getOptions()
+    var t = wx.getStorageSync('orderType')
     this.setData({
       active: t
     })
@@ -35,7 +36,6 @@ Page({
     // 全部订单的时候不用传状态值
     if (status !== '0') param.order_status = status
     getOrderList(param).then(res => {
-      console.log(res)
       _this.setData({
         list: res ? res : []
       })
@@ -48,6 +48,7 @@ Page({
     this.setData({
       active: type
     })
+    wx.setStorageSync('orderType', type)
     this.getList(type)
   },
 

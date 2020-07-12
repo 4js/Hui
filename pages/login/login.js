@@ -16,7 +16,6 @@ Page({
         if (res.code) {
           // 发起网络请求
           getOpenid({code: res.code}).then(res => {
-            console.log(res)
             that.setData({
               openid: res.openid
             })
@@ -30,7 +29,6 @@ Page({
 
   // 登录按钮
   login(e){
-    console.log(e)
     const { nickName, avatarUrl } = e.detail.userInfo
     const { phone, openid } = this.data
 
@@ -55,7 +53,6 @@ Page({
       wx_name: nickName,
       wx_avatar: avatarUrl
     }).then(res => {
-      console.log(res)
       Toast('登录成功');
       try {
         wx.setStorageSync('openid', openid)

@@ -19,8 +19,9 @@ Page({
   },
 
   goOrderList(e){
+    wx.setStorageSync('orderType', e.currentTarget.dataset.t)
     wx.navigateTo({
-      url: '/pages/order/order?t=' + e.currentTarget.dataset.t
+      url: '/pages/order/order'
     })
   },
 
