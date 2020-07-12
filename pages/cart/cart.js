@@ -1,4 +1,4 @@
-import { getCartList, deleteOneFromCart, addGoodsCart } from '../../utils/api'
+import { getCartList, deleteOneFromCart, addGoodsCart, createOrder } from '../../utils/api'
 import Toast from '@vant/weapp/toast/toast'
 import Dialog from '@vant/weapp/dialog/dialog'
 const app = getApp()
@@ -98,23 +98,23 @@ Page({
       message: '下单中...',
     })
     // 处理商品数组
-    console.log(checkList)
+    const goods_list = list.filter(item => item.shop_cart_id === checkList).map(goods => { return {goods_id: goods.goods_id, goods_count: goods.goods_count} })
     // const goods_list = checkList
     //   .map(id => list.find(item => item.shop_cart_id === id))
     //   .map(goods => { return {goods_id: goods.goods_id, goods_count: goods.goods_count} })
-    // createOrder({wx_openid, goods_list: JSON.stringify(goods_list)}).then(res => {
-    //   if (res && res.order_id) {
-    //     setTimeout(function(){
-    //       Toast.clear()
-    //       wx.navigateTo({
-    //         url: '/pages/confirm/confirm?d=' + res.order_id
-    //       })
-    //     }, 1000)
-    //   } else { Toast.clear()}
-    // }).catch(err => {
-    //   Toast.clear()
-    //   Toast(err)
-    // })
+    createOrder({wx_openid, goods_list: JSON.stringify(goods_list)}).then(res => {
+      if (res && res.order_id) {
+        setTimeout(function(){
+          Toast.clear()
+          wx.navigateTo({
+            url: '/pages/confirm/confirm?d=' + res.order_id
+          })
+        }, 1000)
+      } else { Toast.clear()}
+    }).catch(err => {
+      Toast(err)
+      Toast.clear()
+    })
   },
 
   // 改变商品的数量

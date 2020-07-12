@@ -1,4 +1,5 @@
 <view class="container detail-container gray-bg">
+<wxs module="filter" src="../../utils/filter.wxs" />
   <view class="address-box">
     <view class="location">
       <image src="../../assets/loc.png" mode="widthFix"/>
@@ -6,8 +7,9 @@
     <navigator url="/pages/address/address?url=confirm">
       <view wx:if="{{orderInfo.address}}" class="username"><text>{{userName}}</text>{{userTel}}</view>
       <view wx:if="{{orderInfo.address}}" class="info">{{address}}</view>
-      <view wx:if="{{!orderInfo.address}}" class="select">请选择收货地址<van-icon class="icon" name="arrow" /></view>
+      <view wx:if="{{!orderInfo.address}}" class="select">请选择收货地址</view>
     </navigator>
+    <van-icon class="arrow-icon icon" name="arrow" />
   </view>
   <view class="goods">
     <view class="goods-item" wx:for="{{orderInfo.order_goods}}" wx:for-item="goodItem" wx:key="index">
@@ -42,7 +44,7 @@
   </view>
   <view class="time-box">
     <view>订单编号：{{orderInfo.order_sn}} <text data-text="{{orderInfo.order_sn}}" bindtap='copyText'>复制</text></view>
-    <view>下单时间：2020-06-20 13:22:30</view>
+    <view>下单时间：{{filter.getDate(orderInfo.itime)}}</view>
   </view>
   <view class="btn">
     <text class="gray">共 {{orderInfo.order_goods[0].goods_count}} 件，合计：</text><text class="red">¥{{orderInfo.total_pay_money}}</text>

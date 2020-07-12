@@ -12,6 +12,7 @@
   width: 60rpx;
 }
 .detail-container .address-box .username {
+  width: 540rpx;
   font-size: 28rpx;
   color: #333;
 }
@@ -20,7 +21,7 @@
   padding-right: 20rpx;
 }
 .detail-container .address-box .select {
-  width: 560rpx;
+  width: 540rpx;
   display: flex;
   align-items: center;
   justify-content: space-between;

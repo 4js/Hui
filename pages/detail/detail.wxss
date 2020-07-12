@@ -1,3 +1,6 @@
+.detail-container {
+  padding-bottom: 100rpx;
+}
 .detail-container .status-box {
   font-size: 36rpx;
   color: #333;
