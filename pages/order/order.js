@@ -89,30 +89,41 @@ Page({
       order_id,
       wx_openid
     }).then(response => {
-      wx.requestPayment({
-        timeStamp: response.timeStamp,
-        nonceStr: response.nonceStr,
-        package: response.package,
-        signType: response.signType,
-        paySign: response.paySign,
-        success (res) { 
-          Toast('支付成功')
-          getList(active)
-          setTimeout(function(){
-            _this.setData({
-              payLoading: false
-            })
-          }, 1500)
-        },
-        fail (res) {
-          Toast('支付失败')
-          setTimeout(function(){
-            _this.setData({
-              payLoading: false
-            })
-          }, 1500)
-        }
-      })
+      if (response && response.pay_success === 1) {
+        // 不需要支付
+        Toast('支付成功')
+        getList(active)
+        setTimeout(function(){
+          _this.setData({
+            payLoading: false
+          })
+        }, 1500)
+      } else {
+        wx.requestPayment({
+          timeStamp: response.timeStamp,
+          nonceStr: response.nonceStr,
+          package: response.package,
+          signType: response.signType,
+          paySign: response.paySign,
+          success (res) { 
+            Toast('支付成功')
+            getList(active)
+            setTimeout(function(){
+              _this.setData({
+                payLoading: false
+              })
+            }, 1500)
+          },
+          fail (res) {
+            Toast('支付失败')
+            setTimeout(function(){
+              _this.setData({
+                payLoading: false
+              })
+            }, 1500)
+          }
+        })
+      }
     }).catch(err => {
       Toast(err)
       setTimeout(function(){

@@ -22,7 +22,6 @@ Page({
     try {
       var selectAddress = wx.getStorageSync('selectAddress')
       if (selectAddress) {
-        console.log(selectAddress)
         const { address_id } = JSON.parse(selectAddress)
         updateOrderAddress({wx_openid, order_id: options.d, address_id }).then(res => {
           console.log('更新成功')
@@ -32,7 +31,6 @@ Page({
           _this.getList(options.d)
         })
       } else {
-        console.log('未获取到')
         _this.getList(options.d)
       }
     } catch (e) {
@@ -44,7 +42,6 @@ Page({
     const _this = this
     const wx_openid = app.globalData.openid
     getOneOrder({ order_id, wx_openid }).then(res => {
-      console.log(res)
       const addressArr = res.address.split(' ')
       _this.setData({
         orderInfo: res,
@@ -62,24 +59,34 @@ Page({
       order_id: options.d,
       wx_openid
     }).then(response => {
-      wx.requestPayment({
-        timeStamp: response.timeStamp,
-        nonceStr: response.nonceStr,
-        package: response.package,
-        signType: response.signType,
-        paySign: response.paySign,
-        success (res) { 
-          Toast('支付成功')
-          setTimeout(function(){
-            wx.redirectTo({
-              url: '/pages/detail/detail?d=' + options.d
-            })
-          }, 300)
-        },
-        fail (res) {
-          Toast('支付失败')
-        }
-      })
+      if (response && response.pay_success === 1) {
+        // 不需要支付
+        Toast('支付成功')
+        setTimeout(function(){
+          wx.redirectTo({
+            url: '/pages/detail/detail?d=' + options.d
+          })
+        }, 300)
+      } else {
+        wx.requestPayment({
+          timeStamp: response.timeStamp,
+          nonceStr: response.nonceStr,
+          package: response.package,
+          signType: response.signType,
+          paySign: response.paySign,
+          success (res) { 
+            Toast('支付成功')
+            setTimeout(function(){
+              wx.redirectTo({
+                url: '/pages/detail/detail?d=' + options.d
+              })
+            }, 300)
+          },
+          fail (res) {
+            Toast('支付失败')
+          }
+        })
+      }
     }).catch(err => Toast(err))
   },
 
