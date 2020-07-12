@@ -66,6 +66,7 @@ Page({
       if (res && res.order_id) {
         setTimeout(function(){
           Toast.clear()
+          wx.removeStorageSync('selectAddress')
           wx.navigateTo({
             url: '/pages/confirm/confirm?d=' + res.order_id
           })
