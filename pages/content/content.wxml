@@ -2,7 +2,7 @@
 <view class="gray-bg content-container">
   <view class="banner page-section page-section-spacing swiper">
     <swiper class="swiper" indicator-dots="{{true}}" interval="{{2000}}" autoplay="{{true}}">
-      <swiper-item wx:for="{{cover_img}}" wx:key="index">
+      <swiper-item wx:for="{{detail_top_img}}" wx:key="index">
         <image class="goods-image" src="{{item}}" mode="widthFix"/>
       </swiper-item>
     </swiper>

@@ -20,7 +20,7 @@
   <!-- 推荐 start -->
   <view class="recommend-box">
     <navigator class="goods-item" wx:for="{{quality_goods}}" wx:key="index" url="/pages/content/content?d={{item.goods_id}}">
-      <image class="goods-img" src="{{item.cover_img}}" mode="widthFix"/>
+      <image class="goods-img" src="{{item.banner_img}}" mode="widthFix"/>
       <view class="goods-tit">{{item.goods_name}}</view>
       <view class="goods-bt">
         <view>

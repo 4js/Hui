@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-07-13 14:58:26
+ * @LastEditTime: 2020-07-13 15:08:05
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Hui\pages\content\content.js
+ */ 
 import { getOptions } from '../../utils/util'
 import { getOneGoods, addGoodsCart, createOrder } from '../../utils/api'
 import Toast from '@vant/weapp/toast/toast';
@@ -9,7 +17,7 @@ Page({
     openid: '',
     goods_id: '',
     goodInfo: {},
-    cover_img: [],
+    detail_top_img: [],
     detail_img: [],
     number: 1
   },
@@ -28,7 +36,7 @@ Page({
       _this.setData({
         openid: wx_openid,
         goods_id: options.d,
-        cover_img: resp.cover_img.split(','),
+        detail_top_img: resp.detail_top_img.split(','),
         detail_img: resp.detail_img.split(','),
         goodInfo: resp
       })
