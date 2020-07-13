@@ -180,7 +180,7 @@ Page({
   viewLogis(e){
     const { d } = getOptions()
     wx.navigateTo({
-      url: '/pages/logist/logist?d' + d
+      url: '/pages/logist/logist?d=' + d
     })
   }
   
