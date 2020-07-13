@@ -21,7 +21,6 @@ Page({
     const _this = this
     const options = getOptions()
     getLogistic({ order_id: options.d}).then(res => {
-      console.log(res)
       const steps = res.Traces.map(item => {
         return {
           text: item.AcceptStation,
