@@ -6,7 +6,7 @@
       <image src="{{userInfo.wx_avatar}}" mode="widthFix" />
     </view>
     <view class="title">
-      <navigator url="/pages/login/login" class="username">{{userInfo.wx_name}}</navigator>
+      <view class="username">{{userInfo.wx_name}}</view>
       <view class="desc">抵扣余额 ¥{{userInfo.coupon_money}} <text wx:if="{{userInfo.is_expire==='1'}}">| {{userInfo.expire_time}}天后到期</text></view>
     </view>
   </view>
