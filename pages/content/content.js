@@ -1,13 +1,13 @@
 /*
  * @Author: your name
  * @Date: 2020-07-13 14:58:26
- * @LastEditTime: 2020-07-13 15:08:05
+ * @LastEditTime: 2020-07-14 16:23:11
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Hui\pages\content\content.js
  */ 
 import { getOptions } from '../../utils/util'
-import { getOneGoods, addGoodsCart, createOrder } from '../../utils/api'
+import { getOneGoods, addGoodsCart, createOrder, getAddressList } from '../../utils/api'
 import Toast from '@vant/weapp/toast/toast';
 const app = getApp()
 Page({
@@ -19,12 +19,20 @@ Page({
     goodInfo: {},
     detail_top_img: [],
     detail_img: [],
+    addressList: [],
     number: 1
   },
 
   // 生命周期函数--监听页面加载
   onShow: function () {
+    const wx_openid = app.globalData.openid
     this.getList()
+    // 判断是否有地址
+    getAddressList({ wx_openid }).then(res => {
+      _this.setData({
+        addressList: res
+      })
+    })
   },
 
   // 初始化数据
@@ -64,11 +72,20 @@ Page({
   },
 
   goPurchase() {
+    const { goods_id, number, addressList, 'openid': wx_openid } = this.data
+    if (!addressList.length) {
+      Toast('请先添加收货地址')
+      setTimeout(function(){
+        wx.navigateTo({
+          url: "/pages/address/address"
+        })
+      }, 300)
+      return false
+    }
     Toast.loading({
       mask: true,
       message: '下单中...',
     });
-    const { goods_id, number, 'openid': wx_openid } = this.data
     createOrder({wx_openid, goods_list: JSON.stringify([{ 'goods_id': goods_id, 'goods_count': number }])}).then(res => {
       if (res && res.order_id) {
         setTimeout(function(){

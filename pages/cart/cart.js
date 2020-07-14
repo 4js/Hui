@@ -1,4 +1,4 @@
-import { getCartList, deleteOneFromCart, addGoodsCart, createOrder } from '../../utils/api'
+import { getCartList, deleteOneFromCart, addGoodsCart, createOrder, getAddressList } from '../../utils/api'
 import Toast from '@vant/weapp/toast/toast'
 import Dialog from '@vant/weapp/dialog/dialog'
 const app = getApp()
@@ -10,12 +10,20 @@ Page({
     checkedAll: false,
     checkList: '',
     list: [],
+    addressList: [],
     total: 0
   },
 
   // 生命周期函数--监听页面加载
   onShow: function () {
+    const wx_openid = app.globalData.openid
     this.getList()
+    // 判断是否有地址
+    getAddressList({ wx_openid }).then(res => {
+      _this.setData({
+        addressList: res
+      })
+    })
   },
 
   // 下拉刷新
@@ -85,8 +93,18 @@ Page({
 
   // 去下单
   goPurchase() {
-    const { list, checkList } = this.data
+    const { list, checkList, addressList } = this.data
     const wx_openid = app.globalData.openid
+
+    if (!addressList.length) {
+      Toast('请先添加收货地址')
+      setTimeout(function(){
+        wx.navigateTo({
+          url: "/pages/address/address"
+        })
+      }, 300)
+      return false
+    }
 
     if (checkList.length===0) {
       Toast('请选择要购买的商品')
