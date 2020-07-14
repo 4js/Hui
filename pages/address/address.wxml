@@ -24,4 +24,5 @@
     <van-button round block type="info" color="#467BFD" class="btn-add" bindtap="toAdd">+ 新增收货地址</van-button>
   </view>
   <van-dialog id="van-dialog" />
+  <van-toast id="van-toast" />
 </view>
