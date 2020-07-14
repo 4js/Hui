@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-07-13 14:58:26
- * @LastEditTime: 2020-07-14 16:23:11
+ * @LastEditTime: 2020-07-14 16:48:57
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Hui\pages\content\content.js
@@ -25,6 +25,7 @@ Page({
 
   // 生命周期函数--监听页面加载
   onShow: function () {
+    const _this = this
     const wx_openid = app.globalData.openid
     this.getList()
     // 判断是否有地址

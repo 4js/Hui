@@ -65,4 +65,6 @@
     </view>
     <!-- 服务 end -->
   </view>
+
+  <van-toast id="van-toast" />
 </view>

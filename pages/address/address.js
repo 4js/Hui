@@ -71,7 +71,9 @@ Page({
           deleteAddress({wx_openid, address_id}).then(res => {
             Toast('删除成功')
             this.getList()
-          }).catch(err => Toast(err))
+          }).catch(err => {
+            Toast(err)
+          })
           instance.close()
         }).catch(() => {
           instance.close()

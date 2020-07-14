@@ -16,6 +16,7 @@ Page({
 
   // 生命周期函数--监听页面加载
   onShow: function () {
+    const _this = this
     const wx_openid = app.globalData.openid
     this.getList()
     // 判断是否有地址
