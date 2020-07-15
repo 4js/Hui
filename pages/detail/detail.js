@@ -166,7 +166,7 @@ Page({
     })
       .then(() => {
         // on confirm
-        changeOrderStatus({ order_id, order_status: 3 }).then(res => {
+        changeOrderStatus({ order_id, order_status: 5 }).then(res => {
           getList()
           Toast('收货成功')
         }).catch(err => Toast(err))
