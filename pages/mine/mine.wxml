@@ -1,5 +1,6 @@
 <!--pages/mine/mine.wxml-->
 <view class="container gray-bg">
+  <wxs module="filter" src="../../utils/filter.wxs" />
   <!-- 头像 start -->
   <view class="user-box">
     <view class="avater" >
@@ -7,7 +8,7 @@
     </view>
     <view class="title">
       <view class="username">{{userInfo.wx_name}}</view>
-      <view class="desc">抵扣余额 ¥{{userInfo.coupon_money}} <text wx:if="{{userInfo.is_expire==='1'}}">| {{userInfo.expire_time}}天后到期</text></view>
+      <view class="desc">抵扣余额 ¥{{userInfo.coupon_money}} <text wx:if="{{userInfo.is_expire===1}}">| {{filter.getDateDay(userInfo.expire_time)}}到期</text></view>
     </view>
   </view>
   <!-- 头像 end -->

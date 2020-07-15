@@ -1,5 +1,13 @@
+/*
+ * @Author: your name
+ * @Date: 2020-07-13 14:58:26
+ * @LastEditTime: 2020-07-15 15:09:12
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \Hui\config.js
+ */ 
 export default {
-    request_url: "http://huihui.service.agent.szycinfo.com"
-    // request_url: "http://www.gpattern.cn"
+    // request_url: "http://huihui.service.agent.szycinfo.com"
+    request_url: "https://huihui-service.agent.topasst.com"
     // request_url: "http://mall.annle.cn:81"
 }
