@@ -48,6 +48,7 @@
         <van-button size="small" round type="default" class="lef" wx:if="{{item.order_status === '1' && item.expire_status === '1'}}" data-d="{{item.order_id}}" bindtap="cancelOrder">取消订单</van-button>
         <van-button size="small" round type="default" class="lef" wx:if="{{item.order_status === '5' || item.order_status === '3' || item.order_status === '-1' || (item.order_status === '1' && item.expire_status === '2')}}" data-d="{{item.order_id}}" bindtap="deleteOrder">删除订单</van-button>
         <van-button size="small" round type="primary" color="#FF3200" wx:if="{{item.order_status === '1' && item.expire_status === '1'}}" data-d="{{item.order_id}}" bindtap="pay">立即支付</van-button>
+        <van-button wx:if="{{item.order_status === '4'}}" size="small" round type="default" data-d="{{item.order_id}}" class="lef" bindtap="viewLogis">查看物流</van-button>
         <van-button size="small" round type="primary" color="#FF3200" wx:if="{{item.order_status === '4'}}" data-d="{{item.order_id}}" bindtap="confirmOrder">确认收货</van-button>
       </view>
     </view>

@@ -73,6 +73,14 @@ Page({
       });
   },
 
+   // 查看物流
+   viewLogis(e){
+    const { d } = e.currentTarget.dataset
+    wx.navigateTo({
+      url: '/pages/logist/logist?d=' + d
+    })
+  },
+
   // 立即支付
   pay(e){
     // 添加loading效果
