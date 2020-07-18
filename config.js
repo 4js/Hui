@@ -7,7 +7,7 @@
  * @FilePath: \Hui\config.js
  */ 
 export default {
-    request_url: "http://huihui.service.agent.szycinfo.com"
-    // request_url: "https://huihui-service.agent.topasst.com"
+    // request_url: "http://huihui.service.agent.szycinfo.com"
+    request_url: "https://huihui-service.agent.topasst.com"
     // request_url: "http://mall.annle.cn:81"
 }
