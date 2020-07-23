@@ -1,7 +1,7 @@
 <!--pages/content/content.wxml-->
 <view class="gray-bg content-container">
   <view class="banner page-section page-section-spacing swiper">
-    <swiper class="swiper" indicator-dots="{{true}}" interval="{{6000}}" autoplay="{{true}}">
+    <swiper class="swiper" indicator-dots="{{true}}" interval="{{6000}}" autoplay="{{true}}" circular="{{true}}">
       <swiper-item wx:for="{{detail_top_img}}" wx:key="index">
         <image class="goods-image" src="{{item}}" mode="widthFix"/>
       </swiper-item>
@@ -18,7 +18,7 @@
       <view class="desc">{{goodInfo.goods_describe}}</view>
       <view class="number-box">
         <text>购买数量</text>
-        <van-stepper value="{{ number }}" max="{{goodInfo.repertory_num}}" bind:change="onChangeNum" />
+        <van-stepper value="{{ number }}" min="{{ minBuyNum }}" max="{{goodInfo.repertory_num}}" bind:change="onChangeNum" />
       </view>
     </view>
     <view class="desc-tit"><text />商品详情</view>

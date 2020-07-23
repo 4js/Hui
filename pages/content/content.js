@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-07-13 14:58:26
- * @LastEditTime: 2020-07-14 16:48:57
+ * @LastEditTime: 2020-07-23 17:38:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \Hui\pages\content\content.js
@@ -20,6 +20,7 @@ Page({
     detail_top_img: [],
     detail_img: [],
     addressList: [],
+    minBuyNum: 1,
     number: 1
   },
 
@@ -45,6 +46,8 @@ Page({
       _this.setData({
         openid: wx_openid,
         goods_id: options.d,
+        minBuyNum: parseInt(resp.min_buy_num),
+        number: parseInt(resp.min_buy_num),
         detail_top_img: resp.detail_top_img.split(','),
         detail_img: resp.detail_img.split(','),
         goodInfo: resp

@@ -2,9 +2,8 @@
   <view class="top-box">
     <!-- <view>物流状态: <text>已签收</text></view> -->
     <view>快递公司: 
-      <text wx:if="{{shipper==='STO'}}">申通快递</text>
-      <text wx:if="{{shipper==='YTO'}}">圆通快递</text>
-      <text wx:if="{{shipper==='ZTO'}}">中通快递</text>
+      <text wx:if="{{shipper==='ems'}}">EMS</text>
+      <text wx:if="{{shipper==='zhongtongkuaiyun'}}">中通快运</text>
     </view>
     <view>快递单号: {{code}}<text class="fu">复制</text></view>
   </view>

@@ -37,7 +37,7 @@ Page({
     const _this = this
     const wx_openid = app.globalData.openid
     getCartList({ wx_openid }).then(resp => {
-      const cartList = resp.list.map(item => { return Object.assign(item, {cover_img: item.cover_img.split(',')[0]}) })
+      const cartList = resp.list.map(item => { return Object.assign(item, { minNum: parseInt(item.min_buy_num), cover_img: item.cover_img.split(',')[0]}) })
       _this.setData({
         list: cartList
       }, () => {
