@@ -1,7 +1,7 @@
 <!--pages/content/content.wxml-->
 <view class="gray-bg content-container">
   <view class="banner page-section page-section-spacing swiper">
-    <swiper class="swiper" indicator-dots="{{true}}" interval="{{6000}}" autoplay="{{true}}" circular="{{true}}">
+    <swiper class="swiper" indicator-dots="{{true}}" interval="{{3000}}" autoplay="{{true}}" circular="{{true}}">
       <swiper-item wx:for="{{detail_top_img}}" wx:key="index">
         <image class="goods-image" src="{{item}}" mode="widthFix"/>
       </swiper-item>

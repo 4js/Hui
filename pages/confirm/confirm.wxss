@@ -10,6 +10,7 @@
 }
 .detail-container .address-box .location image {
   width: 60rpx;
+  height: auto;
 }
 .detail-container .address-box .username {
   width: 540rpx;
@@ -64,6 +65,7 @@
 }
 .detail-container .goods .goods-item .goods-img image {
   width: 164rpx;
+  height: auto;
 }
 .detail-container .goods .goods-item .goods-tit {
   flex: 1;

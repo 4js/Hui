@@ -29,6 +29,7 @@
 }
 .cart-container .goods-item .goods-img image {
   width: 164rpx;
+  height: auto;
 }
 .cart-container .goods-item .goods-tit {
   flex: 1;

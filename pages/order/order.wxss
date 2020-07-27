@@ -45,6 +45,7 @@
 }
 .order-item .goods-item .goods-img image {
   width: 164rpx;
+  height: auto;
 }
 .order-item .goods-item .goods-tit {
   flex: 1;

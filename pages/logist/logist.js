@@ -21,17 +21,34 @@ Page({
     const _this = this
     const options = getOptions()
     getLogistic({ order_id: options.d}).then(res => {
-      const steps = res.Traces.map(item => {
+      console.log(res)
+      const steps = res.data.map(item => {
         return {
-          text: item.AcceptStation,
-          desc: item.AcceptTime
+          text: item.context,
+          desc: item.ftime
         }
-      }).reverse()
+      })
       _this.setData({
         steps,
-        code: res.LogisticCode,
-        shipper: res.ShipperCode
+        code: res.nu,
+        shipper: res.com
       })
+    })
+  },
+
+  copyText: function (e) {
+    wx.setClipboardData({
+      data: e.currentTarget.dataset.text,
+      success: function (res) {
+        wx.getClipboardData({
+          success: function (res) {
+            wx.showToast({
+              title: '复制成功',
+              icon: 'none'
+            })
+          }
+        })
+      }
     })
   }
 })

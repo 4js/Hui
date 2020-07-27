@@ -145,7 +145,7 @@ export function getUserCenter(params) {
 export function getLogistic(params) {
   return request('/?c=order&a=querywaybill&v=app&site=goods', params, {
     prompt: false
-  }, 1);
+  });
 }
 
 // 订单数量

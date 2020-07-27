@@ -6,6 +6,7 @@
 }
 .content-container .goods-image {
   width: 750rpx;
+  height: auto;
 }
 .content-container .main {
   position: relative;
@@ -85,4 +86,5 @@
 }
 .content-container .main .info .info-image {
   width: 750rpx;
+  height: auto;
 }
