@@ -71,6 +71,27 @@ Page({
       });
   },
 
+  // 申请退款
+  postTui(){
+    const { d: order_id } = getOptions()
+    const { getList } = this
+    Dialog.confirm({
+      message: '确定申请退款？',
+      confirmButtonText: '确定',
+      cancelButtonText: '取消'
+    })
+      .then(() => {
+        // on confirm
+        changeOrderStatus({ order_id, order_status: -3 }).then(res => {
+          getList()
+          Toast('申请成功')
+        }).catch(err => Toast(err))
+      })
+      .catch(() => {
+        // on cancel
+      });
+  },
+
   // 立即支付
   pay(){
     // 添加loading效果

@@ -73,6 +73,27 @@ Page({
       });
   },
 
+  // 取消订单
+  postTui(e){
+    const order_id = e.currentTarget.dataset.d
+    const { data: { active }, getList } = this
+    Dialog.confirm({
+      message: '确定申请退款？',
+      confirmButtonText: '确定',
+      cancelButtonText: '取消'
+    })
+      .then(() => {
+        // on confirm
+        changeOrderStatus({ order_id, order_status: -3 }).then(res => {
+          getList(active)
+          Toast('申请成功')
+        }).catch(err => Toast(err))
+      })
+      .catch(() => {
+        // on cancel
+      });
+  },
+
    // 查看物流
    viewLogis(e){
     const { d } = e.currentTarget.dataset
